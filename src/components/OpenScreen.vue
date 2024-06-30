@@ -2,11 +2,11 @@
     <div id="open-screen">
        <div class="loading">
           <div class="gears">
-            <img class="gear one" src="@/assets/media/gear.png" alt="">
-            <img class="gear two" src="@/assets/media/gear.png" alt="">
+            <img class="gear one" src="@/assets/media/gear.png" alt="gear1">
+            <img class="gear two" src="@/assets/media/gear.png" alt="gear2">
             <h1 class="lomdat text-title">לומדת</h1>
             <h1 class="aibud text-title">עיבוד</h1>
-            <button class="btnNext" @click = "startTutorial"> התחל </button>l
+            <button class="btnNext" @click = "startTutorial"> התחל </button>
           </div>
       </div>
     </div>
@@ -25,6 +25,9 @@ export default {
         };
     },
     methods: {
+      startTutorial() {
+            this.$emit('next-page');
+        },
     },
 };
 
@@ -111,7 +114,7 @@ export default {
 
 
 .lomdat {
-  bottom: 52.5vh;
+  bottom: 53.5vh;
   right: 33vw;
 }
 

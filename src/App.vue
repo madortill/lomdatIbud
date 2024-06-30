@@ -1,102 +1,99 @@
 <template>
-
-
-    <div id="app">
-       <img src="@/assets/media/mifkada-logo.png" class="logo" alt="Logo" @click = "homePage">
-       <img src="@/assets/media/madortill.png" alt="mador-till" class="mador-till">
-       <openScreen></openScreen>
-    </div>
-
-
+  <div id="app">
+    <img
+      src="@/assets/media/mifkada-logo.png"
+      class="logo"
+      alt="Logo"
+      @click="homePage"
+    />
+    <img
+      src="@/assets/media/madortill.png"
+      alt="mador-till"
+      class="mador-till"
+    />
+    <openScreen v-if="page === 0" @next-page="nextPage"></openScreen>
+    <navbar v-if="showNav" :titleIndex="titleIndex"></navbar>
+    <basic-principles v-if="page === 1" @next-page="nextPage"></basic-principles>
+  </div>
 </template>
 
-
 <script>
-import OpenScreen from '@/components/OpenScreen.vue';
-
+import OpenScreen from "@/components/OpenScreen.vue";
+import Navbar from '@/components/Navbar.vue';
+import BasicPrinciples from '@/components/BasicPrinciples.vue';
 
 export default {
-    name: "app",
-    components: {
-        OpenScreen,
+  name: "app",
+  components: {
+    OpenScreen,
+    Navbar,
+    BasicPrinciples
+  },
+  data() {
+    return {
+      page: 0,
+      titleIndex: -1,
+      showNav: true,
+    };
+  },
+  methods: {
+    nextPage() {
+      this.page++;
+      this.titleIndex++;
     },
-    data() {
-        return {
-            page: 0 ,
-        };
+    homePage() {
+        this.page = 0;
     },
-    methods: {
-        nextPage() {
-            this.page++;
-        },
-    },
+  },
 };
 </script>
 
-
 <style scoped>
 @font-face {
-    font-family: 'Heebo';
-    src: url('@/assets/fonts/heebo.regular.ttf');
+  font-family: "Heebo";
+  src: url("@/assets/fonts/heebo.regular.ttf");
 }
-
 
 @font-face {
-    font-family: 'Heebo-Bold';
-    src: url('@/assets/fonts/heebo.black.ttf');
+  font-family: "Heebo-Bold";
+  src: url("@/assets/fonts/heebo.black.ttf");
 }
-
 
 * {
-    overflow: hidden;
-    font-family: 'Heebo';
+  overflow: hidden;
+  font-family: "Heebo";
+  direction: rtl;
 }
-
 
 body {
-    margin: 0;
-    direction: rtl;
+  margin: 0;
+  direction: rtl;
 }
-
 
 #app {
-    font-family: 'Heebo';
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-    background-color: #fdeed5;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background-color: #fdeed5;
 }
-
 
 .logo {
-    max-width: 100px;
-    left: 0;
-    top: 0;
-    position: absolute;
-    margin-top: 1%;
-    margin-left: 1%;
-    z-index: 3;
+  max-width: 100px;
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  z-index: 3;
+  cursor: pointer;
 }
-
 
 .mador-till {
-    max-height: 10%;
-    max-width: 90px;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin-bottom: 1%;
-    margin-right: 1%;
-    z-index: 3;
+  max-height: 10%;
+  max-width: 90px;
+  position: absolute;
+  bottom: 1%;
+  right: 1%;
+  z-index: 3;
 }
 
-
-/* .gray-triangle {
-    min-width: 50px;
-    max-width: 220px;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-} */
+/* Ensure any other necessary styles are properly defined */
 </style>
