@@ -6,9 +6,20 @@
     </div>
 
     <div v-if="clicked===1" class="why-ibud">
-        <p class = "talk-text"> מדוע קיים שלב העיבוד? </p>
-        <div class="circle"></div>
+        <p class = "talk-text why-title"> מדוע קיים שלב העיבוד? </p>
 
+        <div class="circles-container">
+
+        <div class="circle circle0">
+            <p> {{ circlesArray[0] }} </p></div>
+        
+        <div class="circle circle1">
+            <p> {{ circlesArray[1] }} </p></div>
+        
+        <div class="circle circle2">
+            <p> {{ circlesArray[2] }} </p></div>
+        
+       </div>
     </div>
 
     <div v-if="clicked===2" class="ibud-targets explain-bg">
@@ -16,8 +27,11 @@
                 <p class = "explain-text"> {{ explainArray[1] }} </p>
     </div>
 
-<button v-if="clicked<=2" class="btnNext prev" @click = "prev"> חזור </button>
-<button v-if="clicked<2" class="btnNext next" @click = "next"> הבא </button>
+<div class="prev-next-btns">
+    <button v-if="clicked<=2" class="btnNext prev" @click = "prev"> חזור </button>
+    <button v-if="clicked<2" class="btnNext next" @click = "next"> הבא </button>  
+</div>
+
 <button v-if="clicked===2" class="btnNext" @click = "nextPage"> המשך </button>
 </div>
     
@@ -36,6 +50,11 @@ export default {
             explainArray: [ 'עיבוד הוא שלב אשר מתרחש בו ניתוח הנתונים שאספנו במהלך התצפית והפקתם למידע בעל משמעות.',
                 'מציאת דפוסי התנהגות שכיחים ו/או קריטיים הניתנים לשינוי במשוב.'
             ],
+            circlesArray: [
+                'התצפית הינה אוסף של עובדות',
+                'העיבוד מעניק משמעות חדשה לסיטואציה',
+                'החונך לא יכול לזכור הכל מדף התצפית'
+            ]
 
         };
     },
@@ -78,38 +97,44 @@ export default {
     margin: 0%;
 }
 
-.talk-text {
+
+
+ .talk-text {
     margin: 3%;
     animation: floatAnimation 3s ease-in-out infinite;
     color: #E58338;
     font-size: 3rem;
     border-radius: 10px;
-    top:10%;
+    top: 10%;
     text-decoration: none;
     position: relative;
     cursor: default;
-    /* &:hover {
-        color: #E58338;
-
-        &:before {
-            visibility: visible;
-            transform: scaleX(1);
-        }
-    } */
-
-    /* &:before {
-        content: "";
-        position: absolute;
-        width: 40%;
-        height: 2px;
-        bottom: 0;
-        right: 30%;
-        background-color: #E58338;
-        visibility: hidden;
-        transform: scaleX(0);
-        transition: all 0.3s ease-in-out 0s;
-    } */
 }
+.why-title {
+    text-align: center;
+}
+.talk-text:hover {
+    color: #E58338;
+}
+
+.talk-text:before {
+    content: "";
+    position: absolute;
+    width: 40%;
+    height: 2px;
+    bottom: 0;
+    right: 30%;
+    background-color: #E58338;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.talk-text:hover:before {
+    visibility: visible;
+    transform: scaleX(1);
+}
+
 
 
 @keyframes floatAnimation {
@@ -205,12 +230,45 @@ export default {
   }
 }
 
+.circles-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 3rem;
+}
+
 .circle {
     border-radius: 100%;
-    height: 40%;
-    width: 40%;
+    height: 20rem;
+    width: 20rem;
     bottom: 30%;
-    background-color: #E58338;
+    background-color: #ff950596;
+    text-align: center;
+    font-weight: 600;
+    font-size: 2rem;
+    color: rgb(79, 77, 77);    
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+     box-shadow: 15px 15px 20px -20px rgba(0, 0, 0, 0.4);
 }
+
+.circle p {
+    padding: 5%;
+}
+
+.circle0 {
+    /* background-color: #ff950596; */
+    background-color: #FF9505;
+}
+
+.circle1 {
+    background-color: #ffab06;
+}
+
+.circle2 {
+    background-color: #ffb359;
+}
+
 
 </style>
