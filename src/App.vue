@@ -11,7 +11,7 @@
       alt="mador-till"
       class="mador-till "
     />
-    <openScreen v-if="page === 0" @next-page="nextPage"></openScreen>
+    <openScreen v-if="page === 0"  @next-page="nextPage"></openScreen>
     <navbar v-if="showNav" :titleIndex="titleIndex"></navbar>
     <basic-principles v-if="page === 1" @next-page="nextPage"></basic-principles>
   </div>
