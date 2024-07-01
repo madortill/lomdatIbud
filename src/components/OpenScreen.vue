@@ -252,7 +252,7 @@ export default {
 
 @-webkit-keyframes clockwise {
   0% { -webkit-transform: rotate(0deg);}
-  100% { -webkit-transform: rotate(360deg);}
+  100% { -webkit-transform: rotate(360deg) ;}
 }
 @-webkit-keyframes anticlockwise {
   0% { -webkit-transform: rotate(360deg);}
