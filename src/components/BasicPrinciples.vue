@@ -250,7 +250,7 @@ export default {
     display: flex; 
     align-items: center; 
     justify-content: center;
-     box-shadow: 15px 15px 20px -20px rgba(0, 0, 0, 0.4);
+    box-shadow: 15px 15px 20px -20px rgba(0, 0, 0, 0.4);
 }
 
 .circle p {
