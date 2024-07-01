@@ -9,7 +9,7 @@
     <img
       src="@/assets/media/madortill.png"
       alt="mador-till"
-      class="mador-till"
+      class="mador-till "
     />
     <openScreen v-if="page === 0" @next-page="nextPage"></openScreen>
     <navbar v-if="showNav" :titleIndex="titleIndex"></navbar>
