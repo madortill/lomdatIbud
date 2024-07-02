@@ -2,11 +2,11 @@
     <div id="navbar">
         <div class="container">
             <nav>
-                <ul @click="chosenTitle">
-                    <li :class="{ active: titleIndex === 0 }">עקרונות יסוד</li>
-                    <li :class="{ active: titleIndex === 1 }">תהליך עיבוד התצפית</li>
-                    <li :class="{ active: titleIndex === 2 }">הכנה לשיחת משוב</li>
-                    <li :class="{ active: titleIndex === 3 }">תרגול מסכם</li>
+                <ul>
+                    <li :class="{ active: titleIndex === 0 }" @click="chosenTitle(0)">עקרונות יסוד</li>
+                    <li :class="{ active: titleIndex === 1 }" @click="chosenTitle(1)">תהליך עיבוד התצפית</li>
+                    <li :class="{ active: titleIndex === 2 }" @click="chosenTitle(2)">הכנה לשיחת משוב</li>
+                    <li :class="{ active: titleIndex === 3 }" @click="chosenTitle(3)">תרגול מסכם</li>
                 </ul>
             </nav>
         </div>
@@ -23,11 +23,8 @@ export default {
         };
     },
     methods: {
-        chosenTitle(event) {
-            if (event.target.tagName === "li") {
-                this.titleIndex = parseInt(event.target.id.slice(-1)) - 1;
-                this.$emit('chosen-page', this.titleIndex);
-            }
+        chosenTitle(index) {
+            this.$emit('chosen-title', index);
         },
     },
 };
@@ -48,6 +45,7 @@ export default {
 * {
     margin: 0;
     box-sizing: border-box;
+    z-index: 2;
 }
 
 nav {
@@ -73,10 +71,15 @@ nav ul li {
 }
 
 nav ul li.active {
-    background: #FF9505;
-    cursor: pointer;
+    background: #FF9505 !important;
     border-radius: 30px;
     color: white;
+}
+
+nav ul li:hover {
+    background: #ffcd88;
+    cursor: pointer;
+    border-radius: 30px;
 }
 </style>
   

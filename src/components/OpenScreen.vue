@@ -92,6 +92,7 @@ export default {
     border-radius: 100px;
     background-color: #ff9505;
     width: 10vw;
+  font-family: 'Heebo-Bold';
 
 
 }
@@ -163,7 +164,8 @@ export default {
   z-index: 0;
   /* transform: scale(1.5%); */
   /* width: 60vw; */
-  height: 65vh;
+  /* height: 65vh; */
+  height: 40rem;
   margin: 0 auto;
   border-radius: 50%;
   background: var(--stroke-color);
@@ -178,10 +180,14 @@ export default {
   background: var(--main-color);
 }
 .gear:after {
-  position: absolute; left: 25px; top: 25px;
+  /* position: absolute; left: 25px; top: 25px; */
+  position: absolute; left: 25rem; top: 25rem;
+
   z-index: 3;
   content: "";
-  width: 70px; height: 70px;
+  /* width: 70px; height: 70px; */
+  width: 70rem; height: 70rem;
+
   border-radius: 50%;
   border: 5px solid var(--stroke-color);
   box-sizing: border-box;
@@ -189,7 +195,11 @@ export default {
 }
 .gear.one {
   bottom: 18vh;
+  /* bottom: 12rem; */
+
   right: 5vw;
+  /* right: 5rem; */
+
 }
 .gear.two {
   top: 4vh;

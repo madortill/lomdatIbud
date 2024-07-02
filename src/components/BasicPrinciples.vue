@@ -8,28 +8,41 @@
     <div v-if="clicked===1" class="why-ibud">
         <p class = "talk-text why-title"> מדוע קיים שלב העיבוד? </p>
 
-        <div class="circles-container">
+            <div v-if="showArrowToClick" class="click-this">
+                <img src="src/assets/media/arrow.png" class="click-this-arrow">
+                <p class="click-this-text"> לחצו על העיגול </p>
+            </div>    
 
-        <div class="circle circle0">
-            <p> {{ circlesArray[0] }} </p></div>
-        
-        <div class="circle circle1">
-            <p> {{ circlesArray[1] }} </p></div>
-        
-        <div class="circle circle2">
-            <p> {{ circlesArray[2] }} </p></div>
-        
+        <div class="circles-container">
+            
+            <div class="circle first-circle" :style="{ display: firstCircleDisplay }" @click="openCircles">  </div>
+
+            <div class="circle circle0" :style="{ display: circleDisplay , animation: circle0Animation}">
+                <p> {{ circlesArray[0] }} </p></div>
+            
+            <div class="circle circle1" :style="{ display: circleDisplay }">
+                <p> {{ circlesArray[1] }} </p></div>
+            
+            <div class="circle circle2" :style="{ display: circleDisplay }">
+                <p> {{ circlesArray[2] }} </p></div>
+            
        </div>
+
     </div>
 
     <div v-if="clicked===2" class="ibud-targets explain-bg">
                 <p class = "talk-text"> מטרת שלב העיבוד </p>
                 <p class = "explain-text"> {{ explainArray[1] }} </p>
+                <!-- <img src="src/assets/media/target.png" class="target-img"> -->
+                <!-- <img src="src/assets/media/target2.png" class="target-img"> -->
+                <img src="src/assets/media/target3.png" class="target-img">
+
+
     </div>
 
 <div class="prev-next-btns">
-    <button v-if="clicked<=2" class="btnNext prev" @click = "prev"> חזור </button>
-    <button v-if="clicked<2" class="btnNext next" @click = "next"> הבא </button>  
+     <i v-if="clicked>=1 && clicked<=2" @click = "prev" class="arrow right prev"></i>
+     <i v-if="clicked<2" @click = "next" class="arrow left next"></i>
 </div>
 
 <button v-if="clicked===2" class="btnNext" @click = "nextPage"> המשך </button>
@@ -40,7 +53,6 @@
 <script>
 export default {
     name: "basic-principles",
-    props: ["titleIndex"],
     data() {
         return {
             clicked: 0,
@@ -54,7 +66,13 @@ export default {
                 'התצפית הינה אוסף של עובדות',
                 'העיבוד מעניק משמעות חדשה לסיטואציה',
                 'החונך לא יכול לזכור הכל מדף התצפית'
-            ]
+            ],
+
+            firstCircleDisplay: 'flex',
+            circleDisplay:'none',
+            showArrowToClick: true,
+
+            circle0Animation: '',
 
         };
     },
@@ -64,6 +82,14 @@ export default {
             },
         prev() {
             this.clicked--;
+        },
+
+        openCircles() {
+        this.firstCircleDisplay = 'none';
+        this.circleDisplay = 'flex';
+        this.showArrowToClick = false;
+        this.circle0Animation = 'slideRight 1s ease-in';
+
         },
 
         nextPage() {
@@ -109,6 +135,8 @@ export default {
     text-decoration: none;
     position: relative;
     cursor: default;
+    font-family: 'Heebo-Bold';
+
 }
 .why-title {
     text-align: center;
@@ -149,6 +177,46 @@ export default {
 }
 }
 
+
+
+.arrow {
+  border: solid #ff9505;
+  border-width: 0 0.4rem 0.4rem 0;
+  display: inline-block;
+  padding: 0.8%;
+  position: absolute;
+  bottom: 25%;
+  cursor: pointer;
+}
+
+.arrow:hover {
+    animation: grow 0.2s ease-in-out;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+   
+}
+
+@keyframes grow {
+    from {
+        border-width: 0 0.4rem 0.4rem 0;
+    }
+    to {
+        border-width: 0 0.6rem 0.6rem 0;
+    }
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  left: 62%;
+}
+
+.left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  left: 35%;
+}
+
 .btnNext {
     position: absolute;
     border: none;
@@ -162,42 +230,15 @@ export default {
     background-color: #ff9505;
     width: 7vw;
 }
-
-.prev {
-    left: 58%;
-    bottom: 25%;
-}
-
-.next {
-    left: 35%;
-    bottom: 25%;
-}
-
-
 .btnNext {
   animation: borderPulse 4000ms infinite ease-out;
 }
-
 
 .btnNext:hover,
 .btnNext:focus {
   animation: borderPulse 4000ms infinite ease-out,  hoverShine 200ms;
 }
 
-@keyframes growShrink {
-  0% {
-  /* bottom: 30%; */
-    font-size: 10rem;
-  }
-  50% {
-  /* bottom: 32%; */
-    font-size: 12rem;
-  }
-  100% {
-  /* bottom: 30%; */
-    font-size: 10rem;
-  }
-}
 
 @keyframes borderPulse {
   0% {
@@ -251,23 +292,102 @@ export default {
     align-items: center; 
     justify-content: center;
     box-shadow: 15px 15px 20px -20px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease-in-out;
+
+    /* animation: slide 1s ease-in; */
 }
+.circle:hover {
+    transform: scale(1.1);
+}
+
 
 .circle p {
     padding: 5%;
 }
 
+.first-circle {
+    background-color: #ffd196;
+     /* animation: growShrink 2s ease-in-out infinite; */
+     cursor: pointer;
+     margin-right: 3rem;
+}
+.first-circle:hover {
+    box-shadow: 0 0 20px 20px #ffc259; 
+}
+
 .circle0 {
-    /* background-color: #ff950596; */
-    background-color: #FF9505;
+    background-color: #ffba60;
+    display: none;
 }
 
 .circle1 {
-    background-color: #ffab06;
+    background-color: #ffc67b;
+    display: none;
 }
 
 .circle2 {
-    background-color: #ffb359;
+    background-color: rgb(255, 209, 154);
+    display: none;
+
+}
+
+@keyframes growShrink {
+  0% {
+    height: 20rem;
+    width: 20rem;
+  }
+  50% {
+    height: 20.7rem;
+    width: 20.7rem;
+  }
+  100% {
+    height: 20rem;
+    width: 20rem;
+  }
+}
+
+.click-this-arrow {
+    width: 5rem;
+    position: absolute;
+    bottom: 35rem;
+    right: 42rem;
+    transform: rotate(190deg);
+}
+
+.click-this-text {
+    position: absolute;
+    bottom: 36rem;
+    right: 38rem;
+}
+
+
+@keyframes slideRight {
+    0% {
+        transform: translateX(-500px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* .target-img {
+    width: 25rem;
+    position: absolute;
+    top: 4rem;
+    right: 53rem;
+} */
+
+ .target-img {
+    width: 55rem;
+    position: absolute;
+    bottom: 5rem;
+    right: 50rem;
+    animation: swing ease-in-out 1.3s infinite alternate;
+}
+
+@keyframes swing {
+    0% { transform: rotate(3deg); }
+    100% { transform: rotate(-4deg); }
 }
 
 

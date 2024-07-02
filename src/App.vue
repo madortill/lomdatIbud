@@ -9,11 +9,31 @@
     <img
       src="@/assets/media/madortill.png"
       alt="mador-till"
-      class="mador-till "
+      class="mador-till"
     />
+
+    <button v-show ="page === 0" class = "aboutBtn" @click = "openAbout">i</button>
+    <Transition>
+          <div v-show ="showAbout && page===0" class="div-about">
+          <h3 class = "list-text-about">מפתחת ראשית:</h3>
+            <p class = "list-text-about">רב"ט דורון הרפז</p>
+            <h3 class = "list-text-about">גרפיקה:</h3>
+            <p class = "list-text-about">רב"ט דורון הרפז</p>
+            <h3 class = "list-text-about">רת"ח מו"פ:</h3>
+            <p class = "list-text-about">רס"ל אביב אואנונו</p>
+            <h3 class = "list-text-about">רמ"ד טי"ל:</h3>
+            <p class = "list-text-about">רס"מ שלומי אוגרן</p>
+            <h3 class = "list-text-about">גרסה:</h3>
+            <p class = "list-text-about">יולי 2024</p>
+        </div>
+      </Transition>
+
     <openScreen v-if="page === 0"  @next-page="nextPage"></openScreen>
-    <navbar v-if="showNav" :titleIndex="titleIndex"></navbar>
+    <navbar v-if="showNav" :titleIndex="titleIndex" @chosen-title="chosenPage"></navbar>
     <basic-principles v-if="page === 1" @next-page="nextPage"></basic-principles>
+    <process v-if="page === 2" @next-page="nextPage"></process>
+
+
   </div>
 </template>
 
@@ -21,19 +41,24 @@
 import OpenScreen from "@/components/OpenScreen.vue";
 import Navbar from '@/components/Navbar.vue';
 import BasicPrinciples from '@/components/BasicPrinciples.vue';
+import Process from '@/components/Process.vue';
 
 export default {
   name: "app",
   components: {
     OpenScreen,
     Navbar,
-    BasicPrinciples
+    BasicPrinciples,
+    Process,
   },
+
   data() {
     return {
       page: 0,
       titleIndex: -1,
       showNav: true,
+      showAbout: false,
+      clickBtn: 0,
     };
   },
   methods: {
@@ -41,6 +66,22 @@ export default {
       this.page++;
       this.titleIndex++;
     },
+
+    chosenPage(index) {
+      this.titleIndex = index;
+      this.page = this.titleIndex + 1;
+      console.log(this.page);
+    },
+
+    openAbout() {
+          if (this.clickBtn % 2 === 0) {
+                this.showAbout = true;
+            } else {
+                this.showAbout = false
+            }
+            this.clickBtn++;
+        },
+
     homePage() {
         this.page = 0;
     },
@@ -95,5 +136,44 @@ body {
   z-index: 3;
 }
 
-/* Ensure any other necessary styles are properly defined */
+.aboutBtn {
+  position: absolute;
+  border: none;
+  color: white;
+  font-size: 1.6rem;
+  transition: background-color 0.3s ease;
+  background-color: #02ade1;
+  border-radius: 150px;
+  width: 2%;
+  height: 4%;
+  cursor: pointer;
+  left: 2.5%;
+  top: 16%;
+
+}
+
+.aboutBtn:hover{
+  background-color: #038eb9;
+}
+
+.div-about {
+  position: absolute;
+  width: 12%;
+  height: 45%;
+  left: 8%;
+  top: 10%;
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.list-text-about {
+  transition: background-color 0.5s ease;
+  margin: 5%;
+}
+
+.list-text-about:hover {
+  background-color: #dbdbdb;
+}
 </style>
