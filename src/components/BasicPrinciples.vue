@@ -214,7 +214,7 @@ export default {
 .left {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
-  left: 35%;
+  left: 37%;
 }
 
 .btnNext {
