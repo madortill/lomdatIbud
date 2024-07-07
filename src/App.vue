@@ -9,7 +9,7 @@
     <img
       src="@/assets/media/madortill.png"
       alt="mador-till"
-      class="mador-till"
+      class="mador-till   "
     />
 
     <button v-show ="page === 0" class = "aboutBtn" @click = "openAbout">i</button>
