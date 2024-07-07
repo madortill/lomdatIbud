@@ -4,15 +4,17 @@
 
         <div v-if="clicked===0" class="process-first">
             <div class="tazpit">
-                <p class = "talk-text"> תצפית </p>
+                <p class = "talk-text"> תצפית</p>
                 <h3> איסוף סימפטומים </h3>
             </div>
-            <!-- <img src="src/assets/media/arrow2.png" alt="arrow" class="arrow1"> -->
+            <img src="src/assets/media/arrowForProcess3.png" alt="arrow" class="arrow1">
             <div class="ibud">
                 <p class = "talk-text"> עיבוד </p>
                 <h3> מציאת תופעות וחשיבה על מקורות ודרכי התמודדות אפשריים </h3>
             </div>
             <!-- <img src="src/assets/media/arrow2.png" alt="arrow" class="arrow2"> -->
+            <img src="src/assets/media/arrowForProcess2.png" alt="arrow" class="arrow2">
+
             <div class="mashov">
                 <p class = "talk-text"> משוב </p>
                 <h3> מציאת סיבה ומקור לתופעות ובחירת דרכי התמודדות </h3>
@@ -93,29 +95,33 @@ export default {
 
 
 <style scoped>
-
+h3 {
+    font-size: 1.5rem;
+}
 .tazpit {
     position: absolute;
-    right: 25rem;
+    right: 23rem;
     top: 15rem;
     text-align: center;
 }
 .arrow1 {
     position: absolute;
-    right: 30rem;
-    top: 22rem;
-    transform: scaleY(-1) rotate(90deg);
+    width: 14rem;
+    right: 34rem;
+    top: 20rem;
+    transform: rotate(-10deg);
 }
 .ibud {
     position: absolute;
-    right: 45rem;
+    right: 40rem;
     top: 22rem;
     text-align: center;
 }
 .arrow2 {
     position: absolute;
-    right: 65rem;
-    top: 30rem;
+    width: 14rem;
+    right: 73rem;
+    top: 25rem;
 }
 .mashov {
     position: absolute;
