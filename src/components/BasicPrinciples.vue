@@ -9,7 +9,7 @@
         <p class = "talk-text why-title"> מדוע קיים שלב העיבוד? </p>
 
             <div v-if="showArrowToClick" class="click-this">
-                <img src="src/assets/media/arrow.png" class="click-this-arrow">
+                <!-- <img src="src/assets/media/arrow.png" class="click-this-arrow"> -->
                 <p class="click-this-text"> לחצו על העיגול </p>
             </div>    
 
