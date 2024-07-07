@@ -7,12 +7,12 @@
                 <p class = "talk-text"> תצפית </p>
                 <h3> איסוף סימפטומים </h3>
             </div>
-            <img src="src/assets/media/arrow2.png" alt="arrow" class="arrow1">
+            <!-- <img src="src/assets/media/arrow2.png" alt="arrow" class="arrow1"> -->
             <div class="ibud">
                 <p class = "talk-text"> עיבוד </p>
                 <h3> מציאת תופעות וחשיבה על מקורות ודרכי התמודדות אפשריים </h3>
             </div>
-            <img src="src/assets/media/arrow2.png" alt="arrow" class="arrow2">
+            <!-- <img src="src/assets/media/arrow2.png" alt="arrow" class="arrow2"> -->
             <div class="mashov">
                 <p class = "talk-text"> משוב </p>
                 <h3> מציאת סיבה ומקור לתופעות ובחירת דרכי התמודדות </h3>
