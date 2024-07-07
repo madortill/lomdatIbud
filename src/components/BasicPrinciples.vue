@@ -35,7 +35,7 @@
                 <p class = "explain-text"> {{ explainArray[1] }} </p>
                 <!-- <img src="src/assets/media/target.png" class="target-img"> -->
                 <!-- <img src="src/assets/media/target2.png" class="target-img"> -->
-                <img src="src/assets/media/target3.png" class="target-img">
+                <!-- <img src="src/assets/media/target3.png" class="target-img"> -->
 
 
     </div>
