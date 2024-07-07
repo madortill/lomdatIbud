@@ -1,7 +1,7 @@
 <template>
 <div id="basic-principles-page">
     <div v-if="clicked===0" class="what-is-ibud explain-bg">
-                <p class = "talk-text">מהו עיבוד? </p>
+                <p class = "talk-text">מהו עיבוד?</p>
                 <p class ="explain-text"> {{ explainArray[0] }} </p>
     </div>
 
