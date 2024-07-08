@@ -10,12 +10,12 @@
 
             <div v-if="showArrowToClick" class="click-this">
                 <!-- <img src="src/assets/media/arrow.png" class="click-this-arrow"> -->
-                <p class="click-this-text"> לחצו על העיגול </p>
+                <!-- <p class="click-this-text"> לחצו על העיגול </p> -->
             </div>    
 
-        <div class="circles-container">
+        <!-- <div class="circles-container"> -->
             
-            <div class="circle first-circle" :style="{ display: firstCircleDisplay }" @click="openCircles">  </div>
+            <!-- <div class="circle first-circle" :style="{ display: firstCircleDisplay }" @click="openCircles">  </div> -->
 
             <div class="circle circle0" :style="{ display: circleDisplay , animation: circle0Animation}">
                 <p> {{ circlesArray[0] }} </p></div>
@@ -26,7 +26,7 @@
             <div class="circle circle2" :style="{ display: circleDisplay }">
                 <p> {{ circlesArray[2] }} </p></div>
             
-       </div>
+       <!-- </div> -->
 
     </div>
 
@@ -282,7 +282,7 @@ export default {
     border-radius: 100%;
     height: 20rem;
     width: 20rem;
-    bottom: 30%;
+    bottom: 32%;
     background-color: #ff950596;
     text-align: center;
     font-weight: 600;
@@ -317,17 +317,24 @@ export default {
 
 .circle0 {
     background-color: #ffba60;
-    display: none;
+    /* display: none; */
+    position: absolute;
+    right: 20%;
 }
 
 .circle1 {
     background-color: #ffc67b;
-    display: none;
+    /* display: none; */
+    position: absolute;
+    align-self: center;
+    left: 42%;
 }
 
 .circle2 {
     background-color: rgb(255, 209, 154);
-    display: none;
+    /* display: none; */
+    position: absolute;
+    left: 20%;
 
 }
 

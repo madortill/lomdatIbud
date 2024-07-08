@@ -11,5 +11,12 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+
+  // added to deal with the svg problem
+  rollupOptions: {
+    // Ensure to include the file extensions in the external option
+    external: ['.svg'],
+  },
+
   base: process.env.NODE_ENV === "production" ? "/doron1/" : "/",
 })

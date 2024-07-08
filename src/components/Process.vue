@@ -100,32 +100,32 @@ h3 {
 }
 .tazpit {
     position: absolute;
-    right: 23rem;
+    right: 20rem;
     top: 15rem;
     text-align: center;
 }
 .arrow1 {
     position: absolute;
     width: 15rem;
-    right: 34rem;
+    right: 31rem;
     top: 20rem;
     transform: rotate(-10deg);
 }
 .ibud {
     position: absolute;
-    right: 40rem;
+    right: 37rem;
     top: 22rem;
     text-align: center;
 }
 .arrow2 {
     position: absolute;
     width: 15rem;
-    right: 72rem;
-    top: 25rem;
+    right: 69rem;
+    top: 25.5rem;
 }
 .mashov {
     position: absolute;
-    right: 78rem;
+    right: 75rem;
     top: 30rem;
     text-align: center;
 }
