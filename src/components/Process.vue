@@ -3,23 +3,28 @@
 
 
         <div v-if="clicked===0" class="process-first">
+            <!-- <p class="what-to-do"> לחצו על החץ השחור כדי לגלות את השלב הבא </p> -->
             <div class="tazpit">
                 <p class = "talk-text"> תצפית</p>
                 <h3> איסוף סימפטומים </h3>
             </div>
-            <img src="@/assets/media/arrowForProcess3.svg" alt="arrow" class="arrow1">
+            <img v-if="showArrow1" src="@/assets/media/arrowForProcess3.svg" alt="arrow" class="arrow1" @click="showIbud">
 
-            <div class="ibud">
+            <div v-if="showIbudDiv" class="ibud">
                 <p class = "talk-text"> עיבוד </p>
                 <h3> מציאת תופעות וחשיבה על מקורות ודרכי התמודדות אפשריים </h3>
             </div>
-            <img src="@/assets/media/arrowForProcess2.svg" alt="arrow" class="arrow2">
+            <img  v-if="showArrow2" src="@/assets/media/arrowForProcess2.svg" alt="arrow" class="arrow2" @click="showMashov">
 
-            <div class="mashov">
+            <div v-if="showMashovDiv" class="mashov" >
                 <p class = "talk-text"> משוב </p>
                 <h3> מציאת סיבה ומקור לתופעות ובחירת דרכי התמודדות </h3>
             </div>
+        </div>
 
+        <div v-if="clicked===1" class="definition">
+            <p class = "definition-title talk-text"> הגדרת תופעה</p>
+                
         </div>
 
 
@@ -55,10 +60,22 @@ export default {
             arrayFront: ['', '', '',''],
             arrayBack: ['חיוביות', 'אובייקטיביות', 'דיוק', 'פירוט'],
             index: 0,
-            onStart: 'start'
+            onStart: 'start',
+
+            showArrow1: false,
+            showArrow2: false,
+
+            showIbudDiv: false,
+            showMashovDiv: false,
 
 
         };
+    },
+
+    mounted() {
+        setTimeout( () => {
+            this.showArrow1 = true;
+        }, 1500);
     },
 
     methods: {
@@ -77,6 +94,16 @@ export default {
                     this.onStart = 'off';
                 }, 100);
             };
+        },
+
+        showIbud() {
+            this.showIbudDiv = true;
+            setTimeout( () => {
+            this.showArrow2 = true;
+        }, 2000);
+        },
+        showMashov() {
+            this.showMashovDiv = true;
         },
 
 
@@ -98,35 +125,76 @@ export default {
 h3 {
     font-size: 1.5rem;
 }
+p {
+    text-align: center;
+}
 .tazpit {
     position: absolute;
     right: 20rem;
     top: 15rem;
     text-align: center;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 .arrow1 {
     position: absolute;
     width: 15rem;
     right: 31rem;
     top: 20rem;
-    transform: rotate(-10deg);
+    rotate: -10deg;
+    z-index: 1;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+.arrow1:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+
 }
 .ibud {
     position: absolute;
     right: 37rem;
     top: 22rem;
     text-align: center;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 .arrow2 {
     position: absolute;
     width: 15rem;
     right: 69rem;
     top: 25.5rem;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+.arrow2:hover {
+    transform: scale(1.1);
+    cursor: pointer;
 }
 .mashov {
     position: absolute;
     right: 75rem;
     top: 30rem;
+    text-align: center;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.definition-title {
     text-align: center;
 }
 
@@ -138,7 +206,7 @@ h3 {
     border-radius: 10px;
     /* top: 10%; */
     text-decoration: none;
-    /* position: relative; */
+    position: relative;
     cursor: default;
     font-family: 'Heebo-Bold';
 }
@@ -162,10 +230,10 @@ h3 {
 .talk-text:before {
     content: "";
     position: absolute;
-    width: 15rem;
+    width: 40%;
     height: 2px;
     bottom: 0;
-    /* right: 30%; */
+    right: 30%;
     background-color: #E58338;
     visibility: hidden;
     transform: scaleX(0);
@@ -174,7 +242,7 @@ h3 {
 
 .talk-text:hover:before {
     visibility: visible;
-    transform: scaleX(1.3);
+    transform: scaleX(1.5);
 }
 
 .btn {
@@ -207,12 +275,14 @@ h3 {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
   left: 95%;
+
 }
 
 .left {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
   left: 5%;
+
 }
 
 .flip-card-container {

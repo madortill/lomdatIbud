@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img
+    <img v-show ="showAbout"
       src="@/assets/media/mifkada-logo.png"
       class="logo"
       alt="Logo"
@@ -77,13 +77,14 @@ export default {
           if (this.clickBtn % 2 === 0) {
                 this.showAbout = true;
             } else {
-                this.showAbout = false
+                this.showAbout = false;
             }
             this.clickBtn++;
         },
 
     homePage() {
         this.page = 0;
+        this.showAbout = false
     },
   },
 };
@@ -148,7 +149,7 @@ body {
   height: 4%;
   cursor: pointer;
   left: 2.5%;
-  top: 16%;
+  top: 5%;
 
 }
 

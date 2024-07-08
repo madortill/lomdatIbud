@@ -9,21 +9,18 @@
         <p class = "talk-text why-title"> מדוע קיים שלב העיבוד? </p>
 
             <div v-if="showArrowToClick" class="click-this">
-                <!-- <img src="src/assets/media/arrow.png" class="click-this-arrow"> -->
-                <!-- <p class="click-this-text"> לחצו על העיגול </p> -->
             </div>    
 
         <!-- <div class="circles-container"> -->
             
-            <!-- <div class="circle first-circle" :style="{ display: firstCircleDisplay }" @click="openCircles">  </div> -->
 
-            <div class="circle circle0" :style="{ display: circleDisplay , animation: circle0Animation}">
+            <div class="circle circle0" >
                 <p> {{ circlesArray[0] }} </p></div>
             
-            <div class="circle circle1" :style="{ display: circleDisplay }">
+            <div class="circle circle1" >
                 <p> {{ circlesArray[1] }} </p></div>
             
-            <div class="circle circle2" :style="{ display: circleDisplay }">
+            <div class="circle circle2" >
                 <p> {{ circlesArray[2] }} </p></div>
             
        <!-- </div> -->
@@ -33,11 +30,8 @@
     <div v-if="clicked===2" class="ibud-targets explain-bg">
                 <p class = "talk-text"> מטרת שלב העיבוד </p>
                 <p class = "explain-text"> {{ explainArray[1] }} </p>
-                <!-- <img src="src/assets/media/target.png" class="target-img"> -->
-                <!-- <img src="src/assets/media/target2.png" class="target-img"> -->
-                <!-- <img src="src/assets/media/target3.png" class="target-img"> -->
-
-
+          
+                <img src="@/assets/media/target.png" class="target-img">
     </div>
 
 <div class="prev-next-btns">
@@ -67,12 +61,6 @@ export default {
                 'העיבוד מעניק משמעות חדשה לסיטואציה',
                 'החונך לא יכול לזכור הכל מדף התצפית'
             ],
-
-            firstCircleDisplay: 'flex',
-            circleDisplay:'none',
-            showArrowToClick: true,
-
-            circle0Animation: '',
 
         };
     },
@@ -160,7 +148,7 @@ export default {
 
 .talk-text:hover:before {
     visibility: visible;
-    transform: scaleX(1);
+    transform: scaleX(1.5);
 }
 
 
@@ -185,7 +173,7 @@ export default {
   display: inline-block;
   padding: 0.8%;
   position: absolute;
-  bottom: 25%;
+  bottom: 48%;
   cursor: pointer;
 }
 
@@ -208,13 +196,13 @@ export default {
 .right {
   transform: rotate(-45deg);
   -webkit-transform: rotate(-45deg);
-  left: 62%;
+  left: 84%;
 }
 
 .left {
   transform: rotate(135deg);
   -webkit-transform: rotate(135deg);
-  left: 37%;
+  left: 15%;
 }
 
 .btnNext {
@@ -282,7 +270,7 @@ export default {
     border-radius: 100%;
     height: 20rem;
     width: 20rem;
-    bottom: 32%;
+    bottom: 33%;
     background-color: #ff950596;
     text-align: center;
     font-weight: 600;
@@ -294,11 +282,12 @@ export default {
     box-shadow: 15px 15px 20px -20px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease-in-out;
 
-    /* animation: slide 1s ease-in; */
+    
 }
 .circle:hover {
     transform: scale(1.1);
 }
+
 
 
 .circle p {
@@ -307,7 +296,6 @@ export default {
 
 .first-circle {
     background-color: #ffd196;
-     /* animation: growShrink 2s ease-in-out infinite; */
      cursor: pointer;
      margin-right: 3rem;
 }
@@ -317,80 +305,52 @@ export default {
 
 .circle0 {
     background-color: #ffba60;
-    /* display: none; */
     position: absolute;
     right: 20%;
+    animation: slideRight 1s ease-in;
 }
-
+@keyframes slideRight {
+    0% {
+        transform: translateX(-400px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
 .circle1 {
     background-color: #ffc67b;
-    /* display: none; */
     position: absolute;
     align-self: center;
-    left: 42%;
+    left: 41.5%;
 }
 
 .circle2 {
     background-color: rgb(255, 209, 154);
-    /* display: none; */
     position: absolute;
     left: 20%;
-
+    animation: slideLeft 1s ease-in;
 }
-
-@keyframes growShrink {
-  0% {
-    height: 20rem;
-    width: 20rem;
-  }
-  50% {
-    height: 20.7rem;
-    width: 20.7rem;
-  }
-  100% {
-    height: 20rem;
-    width: 20rem;
-  }
-}
-
-.click-this-arrow {
-    width: 5rem;
-    position: absolute;
-    bottom: 35rem;
-    right: 42rem;
-    transform: rotate(190deg);
-}
-
-.click-this-text {
-    position: absolute;
-    bottom: 36rem;
-    right: 38rem;
-}
-
-
-@keyframes slideRight {
+@keyframes slideLeft {
     0% {
-        transform: translateX(-500px);
+        transform: translateX(400px);
     }
     100% {
         transform: translateX(0);
     }
 }
 
-/* .target-img {
+ .target-img {
     width: 25rem;
     position: absolute;
-    top: 4rem;
-    right: 53rem;
-} */
-
- .target-img {
-    width: 55rem;
-    position: absolute;
     bottom: 5rem;
-    right: 50rem;
-    animation: swing ease-in-out 1.3s infinite alternate;
+    right: 43rem;
+    /* animation: swing ease-in-out 1.3s infinite alternate; */
 }
+
+.ibud-targets {
+    left: 35%;
+}
+
 
 @keyframes swing {
     0% { transform: rotate(3deg); }
