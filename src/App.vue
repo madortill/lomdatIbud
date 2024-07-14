@@ -116,7 +116,8 @@ body {
   width: 100vw;
   height: 100vh;
   position: relative;
-  background-color: #fdeed5;
+  background-color: #ebdef8;
+
 }
 
 .logo {

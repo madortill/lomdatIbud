@@ -71,13 +71,14 @@ nav ul li {
 }
 
 nav ul li.active {
-    background: #FF9505 !important;
+    /* background: #FF9505 !important; */
+    background: #ab66e7 !important;
     border-radius: 30px;
     color: white;
 }
 
 nav ul li:hover {
-    background: #ffcd88;
+    background: #c170ff8e;
     cursor: pointer;
     border-radius: 30px;
 }

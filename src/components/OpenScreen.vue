@@ -2,8 +2,8 @@
     <div id="open-screen">
        <div class="loading">
           <div class="gears">
-            <img class="gear one" src="@/assets/media/gear.png" alt="gear1">
-            <img class="gear two" src="@/assets/media/gear.png" alt="gear2">
+            <img class="gear one" src="@/assets/media/gear1.png" alt="gear1">
+            <img class="gear two" src="@/assets/media/gear1.png" alt="gear2">
             <h1 class="lomdat text-title">לומדת</h1>
             <h1 class="aibud text-title">עיבוד</h1>
             <button class="btnNext" @click = "startTutorial"> התחל </button>
@@ -43,7 +43,7 @@ export default {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #fdeed5;
+    background-color: #ebdef8;
 }
 
 
@@ -66,20 +66,6 @@ export default {
 }
 
 
-@keyframes growShrink {
-  0% {
-  /* bottom: 30%; */
-    font-size: 10rem;
-  }
-  50% {
-  /* bottom: 32%; */
-    font-size: 12rem;
-  }
-  100% {
-  /* bottom: 30%; */
-    font-size: 10rem;
-  }
-}
 .btnNext {
     position: absolute;
     border: none;
@@ -90,7 +76,7 @@ export default {
     font-size: 2.6rem;
     color: #ffffff;
     border-radius: 100px;
-    background-color: #ff9505;
+    background-color: #ab66e7;
     width: 10vw;
   font-family: 'Heebo-Bold';
 
@@ -110,19 +96,19 @@ export default {
 
 
 .text-title{
-  font-size: 6rem;
+  font-size: 5.5rem;
 }
 
 
 .lomdat {
-  bottom: 53.5vh;
+  bottom: 58vh;
   right: 33vw;
 }
 
 
 .aibud {
-  bottom: 33vh;
-  right: 58vw;
+  bottom: 30vh;
+  right: 56vw;
 }
 
 
@@ -165,7 +151,7 @@ export default {
   /* transform: scale(1.5%); */
   /* width: 60vw; */
   /* height: 65vh; */
-  height: 40rem;
+  height: 35rem;
   margin: 0 auto;
   border-radius: 50%;
   background: var(--stroke-color);
@@ -194,15 +180,15 @@ export default {
   background: var(--main-color);
 }
 .gear.one {
-  bottom: 18vh;
-  /* bottom: 12rem; */
-
-  right: 5vw;
-  /* right: 5rem; */
+  /* bottom: 18vh; */
+  bottom: 12rem;
+  /* right: 5vw; */
+  right: 5rem;
 
 }
 .gear.two {
-  top: 4vh;
+  top: 5rem;
+  left: 3rem;
 }
 .gear .bar {
   position: absolute; left: -15px; top: 50%;

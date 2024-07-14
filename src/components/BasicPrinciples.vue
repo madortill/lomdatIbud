@@ -8,8 +8,8 @@
     <div v-if="clicked===1" class="why-ibud">
         <p class = "talk-text why-title"> מדוע קיים שלב העיבוד? </p>
 
-            <div v-if="showArrowToClick" class="click-this">
-            </div>    
+            <!-- <div v-if="showArrowToClick" class="click-this"> -->
+            <!-- </div>     -->
 
         <!-- <div class="circles-container"> -->
             
@@ -27,19 +27,33 @@
 
     </div>
 
-    <div v-if="clicked===2" class="ibud-targets explain-bg">
+    <div v-if="clicked===2" class="explain-bg">
                 <p class = "talk-text"> מטרת שלב העיבוד </p>
                 <p class = "explain-text"> {{ explainArray[1] }} </p>
           
-                <img src="@/assets/media/target.png" class="target-img">
+                <!-- <img src="@/assets/media/target.png" class="target-img"> -->
+    </div>
+
+    <div v-if="clicked===3" class="question">
+        <p class = "talk-text"> שאלת וידוא הבנה </p>
+        <div class="question-text">
+            <h3> חשבו וענו : האם המשפט הבא נכון או לא נכון? </h3>
+            <h1 > בשלב העיבוד אני אוספת נתונים רבים כגון ציטוטים ותיאורים. </h1>
+            <button class="correct-btn" :style="wrongAnswer" @click="checkAnswer" :disabled="buttonClicked"> נכון </button>
+            <button class="not-correct-btn" :style="rightAnswer" @click="checkAnswer" :disabled="buttonClicked"> לא נכון </button>
+            
+            <h3 v-if="showExplanation" class="que-explanation"> הסבר </h3>
+        </div>
+        
+
     </div>
 
 <div class="prev-next-btns">
-     <i v-if="clicked>=1 && clicked<=2" @click = "prev" class="arrow right prev"></i>
-     <i v-if="clicked<2" @click = "next" class="arrow left next"></i>
+     <button v-if="clicked>=1 && clicked<=3" @click = "prev" class="prev btnNext"> חזור </button>
+     <button v-if="clicked<3" @click = "next" class="next btnNext"> הבא </button>
 </div>
 
-<button v-if="clicked===2" class="btnNext" @click = "nextPage"> המשך </button>
+<button v-if="clicked===3" class="btnNext" @click = "nextPage"> המשך </button>
 </div>
     
 </template>
@@ -61,6 +75,10 @@ export default {
                 'העיבוד מעניק משמעות חדשה לסיטואציה',
                 'החונך לא יכול לזכור הכל מדף התצפית'
             ],
+            showExplanation: false,
+            buttonClicked: false,
+            rightAnswer: '',
+            wrongAnswer: '',
 
         };
     },
@@ -72,13 +90,26 @@ export default {
             this.clicked--;
         },
 
-        openCircles() {
-        this.firstCircleDisplay = 'none';
-        this.circleDisplay = 'flex';
-        this.showArrowToClick = false;
-        this.circle0Animation = 'slideRight 1s ease-in';
+        checkAnswer(event) {
+            if (!this.buttonClicked) {
+            if(event.target.className === 'correct-btn') {
+                this.showExplanation = true;
+                this.wrongAnswer = 'background-color: #E74C3C; color:white;';
 
+            } else if(event.target.className === 'not-correct-btn') {
+                this.showExplanation = true;
+                this.rightAnswer = 'background-color: #82BF56; color:white;';
+            }
+        }
+        this.buttonClicked = true;
         },
+
+        // openCircles() {
+        // this.firstCircleDisplay = 'none';
+        // this.circleDisplay = 'flex';
+        // this.showArrowToClick = false;
+        // this.circle0Animation = 'slideRight 1s ease-in';
+        // },
 
         nextPage() {
             this.$emit('next-page');
@@ -116,7 +147,7 @@ export default {
  .talk-text {
     margin: 3%;
     animation: floatAnimation 3s ease-in-out infinite;
-    color: #E58338;
+    color: #ab66e7;
     font-size: 3rem;
     border-radius: 10px;
     top: 10%;
@@ -130,7 +161,7 @@ export default {
     text-align: center;
 }
 .talk-text:hover {
-    color: #E58338;
+    color: #ab66e7;
 }
 
 .talk-text:before {
@@ -140,7 +171,7 @@ export default {
     height: 2px;
     bottom: 0;
     right: 30%;
-    background-color: #E58338;
+    background-color: #ab66e7;
     visibility: hidden;
     transform: scaleX(0);
     transition: all 0.3s ease-in-out 0s;
@@ -166,56 +197,17 @@ export default {
 }
 
 
-
-.arrow {
-  border: solid #ff9505;
-  border-width: 0 0.4rem 0.4rem 0;
-  display: inline-block;
-  padding: 0.8%;
-  position: absolute;
-  bottom: 48%;
-  cursor: pointer;
-}
-
-.arrow:hover {
-    animation: grow 0.2s ease-in-out;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-   
-}
-
-@keyframes grow {
-    from {
-        border-width: 0 0.4rem 0.4rem 0;
-    }
-    to {
-        border-width: 0 0.6rem 0.6rem 0;
-    }
-}
-
-.right {
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  left: 84%;
-}
-
-.left {
-  transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-  left: 15%;
-}
-
 .btnNext {
     position: absolute;
     border: none;
     cursor: pointer;   
     height: 5%;
-    left: 45%;
+    left: 10%;
     bottom: 10%;
     font-size: 2rem;
     color: #ffffff;
     border-radius: 100px;
-    background-color: #ff9505;
+    background-color: #ab66e7;
     width: 7vw;
 }
 .btnNext {
@@ -259,6 +251,17 @@ export default {
   }
 }
 
+.prev {
+  left: 84%;
+  text-align: center;
+}
+
+.next {
+  left: 10%;
+  text-align: center;
+
+} 
+
 .circles-container {
     display: flex;
     justify-content: space-evenly;
@@ -270,8 +273,7 @@ export default {
     border-radius: 100%;
     height: 20rem;
     width: 20rem;
-    bottom: 33%;
-    background-color: #ff950596;
+    bottom: 30%;
     text-align: center;
     font-weight: 600;
     font-size: 2rem;
@@ -294,17 +296,9 @@ export default {
     padding: 5%;
 }
 
-.first-circle {
-    background-color: #ffd196;
-     cursor: pointer;
-     margin-right: 3rem;
-}
-.first-circle:hover {
-    box-shadow: 0 0 20px 20px #ffc259; 
-}
 
 .circle0 {
-    background-color: #ffba60;
+    background-color: #b97edb;
     position: absolute;
     right: 20%;
     animation: slideRight 1s ease-in;
@@ -318,14 +312,14 @@ export default {
     }
 }
 .circle1 {
-    background-color: #ffc67b;
+    background-color: #c998e6;
     position: absolute;
     align-self: center;
     left: 41.5%;
 }
 
 .circle2 {
-    background-color: rgb(255, 209, 154);
+    background-color: #d7b9e9;
     position: absolute;
     left: 20%;
     animation: slideLeft 1s ease-in;
@@ -347,9 +341,6 @@ export default {
     /* animation: swing ease-in-out 1.3s infinite alternate; */
 }
 
-.ibud-targets {
-    left: 35%;
-}
 
 
 @keyframes swing {
@@ -357,5 +348,66 @@ export default {
     100% { transform: rotate(-4deg); }
 }
 
+
+.question {
+    text-align: center;
+}
+
+.question-text {
+    position: absolute;
+    width: 40%;
+    height: 40%;
+    left: 30%;
+    bottom: 30%;
+    background: #fff;
+    border-radius: 3rem;
+    box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    /* align-content: center; */
+    
+}
+
+.correct-btn {
+    position: absolute;
+    right: 10rem;
+    height: 4rem;
+    width: 7rem;
+    font-family: "Heebo-Bold";
+    font-size: 1.5rem;
+
+}
+
+.not-correct-btn {
+    position: absolute;
+    left: 10rem;
+    height: 4rem;
+    width: 7rem;
+    font-family: "Heebo-Bold";
+    font-size: 1.5rem;
+}
+
+.que-explanation {
+    position: absolute;
+    bottom: 27rem;
+    right: 23rem;
+    animation: drop 0.5s ease forwards;
+}
+
+@keyframes drop {
+
+0% {
+
+  opacity:0;
+
+}
+
+70% {
+  transform: translateY(30rem);
+}
+100% {
+  transform: translateY(25rem);
+  opacity: 1;
+}
+}
 
 </style>

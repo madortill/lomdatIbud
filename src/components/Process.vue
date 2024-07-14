@@ -1,9 +1,8 @@
 <template>
     <div id="process-page">
 
-
         <div v-if="clicked===0" class="process-first">
-            <!-- <p class="what-to-do"> לחצו על החץ השחור כדי לגלות את השלב הבא </p> -->
+            <p class="what-to-do-text"> לחצו על החץ השחור כדי לגלות את השלב הבא </p>
             <div class="tazpit">
                 <p class = "talk-text"> תצפית</p>
                 <h3> איסוף סימפטומים </h3>
@@ -14,7 +13,7 @@
                 <p class = "talk-text"> עיבוד </p>
                 <h3> מציאת תופעות וחשיבה על מקורות ודרכי התמודדות אפשריים </h3>
             </div>
-            <img  v-if="showArrow2" src="@/assets/media/arrowForProcess2.svg" alt="arrow" class="arrow2" @click="showMashov">
+            <img  v-if="showArrow2" src="@/assets/media/arrowForProcess3.svg" alt="arrow" class="arrow2" @click="showMashov">
 
             <div v-if="showMashovDiv" class="mashov" >
                 <p class = "talk-text"> משוב </p>
@@ -41,11 +40,12 @@
             </div>
         </div>
 
-
         <div class="prev-next-btns">
-            <i v-if="clicked>=1 && clicked<=4" @click = "prev" class="btn right prev"></i>
-            <i v-if="clicked<4" @click = "next" class="btn left next"></i>
+            <button v-if="clicked>=1 && clicked<=4" @click = "prev" class="prev btnNext"> חזור </button>
+            <button v-if="clicked<4" @click = "next" class="next btnNext"> הבא </button>
         </div>
+
+        
 
         <button v-if="clicked===4" class="btnNext" @click = "nextPage"> המשך </button>
     </div>
@@ -166,7 +166,8 @@ p {
     position: absolute;
     width: 15rem;
     right: 69rem;
-    top: 25.5rem;
+    top: 27rem;
+    rotate: -15deg;
     animation: fadeInAnimation ease 3s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
@@ -201,7 +202,7 @@ p {
  .talk-text {
     margin: 2%;
     animation: floatAnimation 3s ease-in-out infinite;
-    color: #E58338;
+    color: #ab66e7;
     font-size: 4rem;
     border-radius: 10px;
     /* top: 10%; */
@@ -224,7 +225,7 @@ p {
 }
 
 .talk-text:hover {
-    color: #E58338;
+    color: #ab66e7;
 }
 
 .talk-text:before {
@@ -234,7 +235,7 @@ p {
     height: 2px;
     bottom: 0;
     right: 30%;
-    background-color: #E58338;
+    background-color: #ab66e7;
     visibility: hidden;
     transform: scaleX(0);
     transition: all 0.3s ease-in-out 0s;
@@ -245,45 +246,6 @@ p {
     transform: scaleX(1.5);
 }
 
-.btn {
-  border: solid #ff9505;
-  border-width: 0 0.4rem 0.4rem 0;
-  display: inline-block;
-  padding: 0.8%;
-  position: absolute;
-  bottom: 20%;
-  cursor: pointer;
-}
-
-.btn:hover {
-    animation: grow 0.2s ease-in-out;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-   
-}
-
-@keyframes grow {
-    from {
-        border-width: 0 0.4rem 0.4rem 0;
-    }
-    to {
-        border-width: 0 0.6rem 0.6rem 0;
-    }
-}
-
-.right {
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  left: 95%;
-
-}
-
-.left {
-  transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-  left: 5%;
-
-}
 
 .flip-card-container {
     display: flex;
@@ -338,7 +300,7 @@ p {
 }
 
 .flip-card-back {
-    background-color: #ff9966;
+    background-color: #7B2CBF;
     border-radius: 30px;
     color: rgb(84, 82, 82);
     transform: rotateY(180deg);
@@ -371,19 +333,17 @@ p {
 
 
 
-
-
 .btnNext {
     position: absolute;
     border: none;
     cursor: pointer;   
     height: 5%;
-    left: 45%;
+    left: 10%;
     bottom: 10%;
     font-size: 2rem;
     color: #ffffff;
     border-radius: 100px;
-    background-color: #ff9505;
+    background-color: #ab66e7;
     width: 7vw;
 }
 .btnNext {
@@ -426,4 +386,15 @@ p {
     background-image: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,.4) 100%);
   }
 }
+
+.prev {
+  left: 84%;
+  text-align: center;
+}
+
+.next {
+  left: 10%;
+  text-align: center;
+
+} 
 </style>
