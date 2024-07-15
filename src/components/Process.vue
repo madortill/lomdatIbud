@@ -12,19 +12,26 @@
 
             <div v-if="showIbudDiv" class="ibud">
                 <p class = "talk-text"> עיבוד </p>
-                <h3> מציאת תופעות וחשיבה על מקורות ודרכי התמודדות אפשריים </h3>
+                <h3> מציאת תופעות וחשיבה על דרכי התמודדות </h3>
             </div>
             <img  v-if="showArrow2" src="@/assets/media/arrowForProcess3.svg" alt="arrow" class="arrow2" @click="showMashov">
 
             <div v-if="showMashovDiv" class="mashov" >
                 <p class = "talk-text"> משוב </p>
-                <h3> מציאת סיבה ומקור לתופעות ובחירת דרכי התמודדות </h3>
+                <h3> מציאת המקור לתופעות ובחירת דרכי התמודדות </h3>
             </div>
         </div>
 
-        <div v-if="clicked===1" class="definition">
+        <div v-if="clicked===1" class="definition explain-bg">
             <p class = "definition-title talk-text"> הגדרת תופעה</p>
-                
+            
+            <div class="calculator">
+                <h3 class=" how-calculator"> {{ definitionArray[0] }} </h3>
+                <button class="calculate-btn" @click="clickedCalculator"></button>
+            </div>
+            
+            <h2 v-if="showAnsCalculator" class="ans-calculator"> {{ definitionArray[1] }} </h2>
+
         </div>
 
 
@@ -58,10 +65,16 @@ export default {
     data() {
         return {
             clicked: 0,
+
+            definitionArray: [' כיצד נגדיר תופעה? ',
+                ' עלינו לנתח את הסימפטומים ולמצוא מכנה משותף או מספר מכנים משותפים. לאחר מכן נוכל להבין מה התופעה. ',
+            ],
             arrayFront: ['', '', '',''],
             arrayBack: ['חיוביות', 'אובייקטיביות', 'דיוק', 'פירוט'],
             index: 0,
             onStart: 'start',
+
+
 
             showArrow1: false,
             showArrow2: false,
@@ -72,6 +85,8 @@ export default {
             upHere: false,
 
             ideaIconSrc: '@/assets/media/ideaIcon-noColor.png',
+
+            showAnsCalculator: false,
 
 
         };
@@ -109,6 +124,9 @@ export default {
         },
         showMashov() {
             this.showMashovDiv = true;
+        },
+        clickedCalculator() {
+            this.showAnsCalculator = true;
         },
 
 
@@ -223,6 +241,69 @@ p {
 
 .definition-title {
     text-align: center;
+}
+/* .explain-bg {
+    position: absolute;
+    width: 40%;
+    height: 60%;
+    left: 30%;
+    bottom: 20%;
+    background: #fff;
+    border-radius: 3rem;
+    box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
+    text-align: center;
+} */
+
+.calculator {
+    background-image: url(@/assets/media/calculator.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 20rem;
+    height: 30rem;
+    right: 50rem;
+    top: 18rem;
+    text-align: center;
+}
+
+.how-calculator {
+    line-height: 6rem;
+}
+
+.calculate-btn {
+    position: absolute;
+    height: 7.3rem;
+    width: 2.5rem;
+    right: 2rem;
+    top: 20rem;
+    cursor: pointer;
+    background-color: rgb(248, 192, 255);
+    animation: changeColor 1.5s linear infinite;
+}
+
+@keyframes changeColor {
+    0% {
+        background-color: rgb(245, 137, 155);
+    }
+  50% {
+background-color: rgb(231, 52, 216);
+  }
+  100% {
+    background-color: rgb(245, 137, 155);
+  }
+}
+
+.calculate-btn:hover {
+    background: linear-gradient(0deg, rgb(245, 137, 155) 0%, rgb(231, 52, 216) 100%);
+}
+
+.ans-calculator {
+    position: absolute;
+    width: 40rem;
+    text-align: center;
+    right: 60rem;
+    top: 25rem;
+    line-height: 4rem;
 }
 
  .talk-text {
