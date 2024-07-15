@@ -76,7 +76,7 @@ export default {
     font-size: 2.6rem;
     color: #ffffff;
     border-radius: 100px;
-    background-color: #ab66e7;
+    background-color: rgb(201,165,249);
     width: 10vw;
   font-family: 'Heebo-Bold';
 

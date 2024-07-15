@@ -2,7 +2,8 @@
     <div id="process-page">
 
         <div v-if="clicked===0" class="process-first">
-            <p class="what-to-do-text"> לחצו על החץ השחור כדי לגלות את השלב הבא </p>
+            <div class="idea-icon" @mouseover="upHere = true" @mouseleave="upHere = false"></div>
+            <p v-if="upHere" class="what-to-do-text"> לחצו על החץ השחור כדי לגלות את השלב הבא </p>
             <div class="tazpit">
                 <p class = "talk-text"> תצפית</p>
                 <h3> איסוף סימפטומים </h3>
@@ -68,6 +69,10 @@ export default {
             showIbudDiv: false,
             showMashovDiv: false,
 
+            upHere: false,
+
+            ideaIconSrc: '@/assets/media/ideaIcon-noColor.png',
+
 
         };
     },
@@ -128,6 +133,30 @@ h3 {
 p {
     text-align: center;
 }
+
+.what-to-do-text {
+    position: absolute;
+    top: 12rem;
+    right: 51rem;
+}
+
+.idea-icon {
+    background-image: url(@/assets/media/ideaIcon-noColor.png);
+    background-size:100% 100% ;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 6rem;
+    height: 5rem;
+    right: 57rem;
+    top: 7rem;
+    cursor: pointer;
+}
+
+.idea-icon:hover {
+    background-image: url(@/assets/media/ideaIcon-color.png);
+    /* transform: scale(1.1); */
+
+}
 .tazpit {
     position: absolute;
     right: 20rem;
@@ -148,10 +177,10 @@ p {
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
-.arrow1:hover {
+.arrow1:hover,
+.arrow2:hover {
     transform: scale(1.1);
     cursor: pointer;
-
 }
 .ibud {
     position: absolute;
@@ -172,10 +201,7 @@ p {
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
-.arrow2:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-}
+
 .mashov {
     position: absolute;
     right: 75rem;

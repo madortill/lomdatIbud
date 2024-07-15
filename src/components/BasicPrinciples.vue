@@ -35,14 +35,19 @@
     </div>
 
     <div v-if="clicked===3" class="question">
-        <p class = "talk-text"> שאלת וידוא הבנה </p>
+        <!-- <p class = "talk-text"> שאלת וידוא הבנה </p> -->
         <div class="question-text">
             <h3> חשבו וענו : האם המשפט הבא נכון או לא נכון? </h3>
             <h1 > בשלב העיבוד אני אוספת נתונים רבים כגון ציטוטים ותיאורים. </h1>
             <button class="correct-btn" :style="wrongAnswer" @click="checkAnswer" :disabled="buttonClicked"> נכון </button>
             <button class="not-correct-btn" :style="rightAnswer" @click="checkAnswer" :disabled="buttonClicked"> לא נכון </button>
             
-            <h3 v-if="showExplanation" class="que-explanation"> הסבר </h3>
+            <div v-if="answerBg" class="answer-bg"></div>
+            <div v-if="showExplanation" class="que-explanation">
+                <h2 class="right-or-wrong"> {{ rightOrWrongAnswer }} </h2>
+                <h3 > שלב העיבוד מגיע לאחר איסוף הנתונים על מנת לנתחם. </h3>
+            </div>
+            
         </div>
         
 
@@ -79,6 +84,8 @@ export default {
             buttonClicked: false,
             rightAnswer: '',
             wrongAnswer: '',
+            rightOrWrongAnswer: '',
+            answerBg: false,
 
         };
     },
@@ -95,10 +102,16 @@ export default {
             if(event.target.className === 'correct-btn') {
                 this.showExplanation = true;
                 this.wrongAnswer = 'background-color: #E74C3C; color:white;';
+                this.rightOrWrongAnswer = 'תשובה לא נכונה';
+                this.answerBg = true;
 
             } else if(event.target.className === 'not-correct-btn') {
                 this.showExplanation = true;
                 this.rightAnswer = 'background-color: #82BF56; color:white;';
+                this.rightOrWrongAnswer = 'תשובה נכונה!';
+                this.answerBg = true;
+
+
             }
         }
         this.buttonClicked = true;
@@ -208,6 +221,10 @@ export default {
     color: #ffffff;
     border-radius: 100px;
     background-color: #ab66e7;
+    z-index: 1;
+
+    /* background-color: rgb(201,165,249); */
+
     width: 7vw;
 }
 .btnNext {
@@ -358,39 +375,100 @@ export default {
     width: 40%;
     height: 40%;
     left: 30%;
-    bottom: 30%;
-    background: #fff;
-    border-radius: 3rem;
-    box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
+    bottom: 35%;
+    /* line-height: 5rem; */
+    /* background: #fff; */
+    /* border-radius: 3rem; */
+    /* box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4); */
     text-align: center;
-    /* align-content: center; */
     
 }
 
 .correct-btn {
+    border-radius: 5rem;
     position: absolute;
+    top: 15rem;
     right: 10rem;
-    height: 4rem;
-    width: 7rem;
+    height: 5rem;
+    width: 10rem;
     font-family: "Heebo-Bold";
     font-size: 1.5rem;
-
+    box-shadow: 0px 5px 0px 0px #000000;
+    cursor: pointer;
+    background-color: #c5d6f7;
 }
 
 .not-correct-btn {
+    border-radius: 5rem;
     position: absolute;
+    top: 15rem;
     left: 10rem;
-    height: 4rem;
-    width: 7rem;
+    height: 5rem;
+    width: 10rem;
     font-family: "Heebo-Bold";
     font-size: 1.5rem;
+    box-shadow: 0px 5px 0px 0px #000000;
+    cursor: pointer;
+    background-color: #c5d6f7;
+}
+
+.correct-btn:hover,
+.not-correct-btn:hover {
+    animation: hoverShine 200ms;
+    transform: scale(1.1);
+
+}
+
+.correct-btn:active,
+.not-correct-btn:active {
+  transform: translate(0px, 5px);
+  -webkit-transform: translate(0px, 5px);
+  box-shadow: 0px 1px 0px 0px;
+}
+
+.right-or-wrong {
+    /* position: relative; */
+    /* top: 13rem; */
+    font-family: "Heebo-Bold";
+
 }
 
 .que-explanation {
     position: absolute;
-    bottom: 27rem;
-    right: 23rem;
-    animation: drop 0.5s ease forwards;
+    background-color: #fff;
+    width: 100vw;
+    top: 22rem;
+    left: -36rem;
+    text-align: center;
+  box-shadow: 0px 5px 5px 0px;
+  animation: fadeInUp;
+  animation-duration: 2s;
+  transform-origin: top center;
+  z-index: 3;
+
+    /* bottom: -15rem; */
+    /* right: 10.5rem; */
+    /* animation: bounce 2s ease forwards; */
+    /* animation: drop 0.5s ease forwards; */
+}
+
+@keyframes fadeInUp {
+from {opacity: 0;
+    transform: translate3d(0, 100%, 0)}
+  to {opacity: 1;
+    transform: translate3d(0, 0, 0)}
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(-7rem);
+  }
+  40% {
+    transform: translateY(-8rem);
+  }
+  60% {
+    transform: translateY(-9rem);
+  }
 }
 
 @keyframes drop {
@@ -408,6 +486,16 @@ export default {
   transform: translateY(25rem);
   opacity: 1;
 }
+}
+
+.answer-bg {
+    width: 150vw;
+    height: 150vh;
+    position: absolute;
+    z-index: 1;
+    top: -70%;
+    right: -80%;
+    background-color: #03030369;
 }
 
 </style>
