@@ -22,16 +22,22 @@
             </div>
         </div>
 
-        <div v-if="clicked===1" class="definition explain-bg">
+        <div v-if="clicked===1" class="definition">
             <p class = "definition-title talk-text"> הגדרת תופעה</p>
-            
-            <div class="calculator">
-                <h3 class=" how-calculator"> {{ definitionArray[0] }} </h3>
-                <button class="calculate-btn" @click="clickedCalculator"></button>
+           
+            <div class="calculator" :class="{'slide-away' : slideAwayAnimation}">
+                <h3 class="how-calculator" > {{ definitionArray[0] }} </h3>
+                <button class="calculate-btn" @click="clickedCalculator" :class="{'click-me' : !showAnsCalculator}"> לחצו כאן! </button>
+                
             </div>
-            
+            <div class="calc-bg"></div>
             <h2 v-if="showAnsCalculator" class="ans-calculator"> {{ definitionArray[1] }} </h2>
+        </div>
 
+
+        <div v-if="clicked===2" class="">
+            <p class = "talk-text"> לדוגמה...</p>
+           
         </div>
 
 
@@ -87,6 +93,7 @@ export default {
             ideaIconSrc: '@/assets/media/ideaIcon-noColor.png',
 
             showAnsCalculator: false,
+            slideAwayAnimation: false,
 
 
         };
@@ -126,7 +133,9 @@ export default {
             this.showMashovDiv = true;
         },
         clickedCalculator() {
-            this.showAnsCalculator = true;
+            this.slideAwayAnimation = true;
+        this.showAnsCalculator = true;
+           
         },
 
 
@@ -172,9 +181,8 @@ p {
 
 .idea-icon:hover {
     background-image: url(@/assets/media/ideaIcon-color.png);
-    /* transform: scale(1.1); */
-
 }
+
 .tazpit {
     position: absolute;
     right: 20rem;
@@ -202,7 +210,7 @@ p {
 }
 .ibud {
     position: absolute;
-    right: 37rem;
+    right: 45rem;
     top: 22rem;
     text-align: center;
     animation: fadeInAnimation ease 3s;
@@ -242,68 +250,121 @@ p {
 .definition-title {
     text-align: center;
 }
-/* .explain-bg {
-    position: absolute;
-    width: 40%;
-    height: 60%;
-    left: 30%;
-    bottom: 20%;
-    background: #fff;
-    border-radius: 3rem;
-    box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
-    text-align: center;
-} */
+
 
 .calculator {
-    background-image: url(@/assets/media/calculator.png);
+    background-image: url(@/assets/media/calculator2.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
     position: absolute;
-    width: 20rem;
-    height: 30rem;
-    right: 50rem;
-    top: 18rem;
-    text-align: center;
+    width: 40rem;
+    height: 40rem;
+    right: 40rem;
+    top: 14rem;
+    z-index: 2;
 }
+
+.calc-bg {
+    background-color: #ebdef8;
+    width: 50rem;
+    height: 25rem;
+    position: fixed;
+    z-index: 1;
+    right: 75rem;
+    top: 20rem;
+}
+
 
 .how-calculator {
     line-height: 6rem;
+  font-family: "Heebo-Bold";
+
+    transform: rotate(-17deg);
+    position: absolute;
+    top: 7.5rem;
+    right: 15.5rem;
 }
 
 .calculate-btn {
     position: absolute;
     height: 7.3rem;
-    width: 2.5rem;
-    right: 2rem;
-    top: 20rem;
+    width: 4rem;
+    right: 7.5rem;
+    top: 20.5rem;
     cursor: pointer;
-    background-color: rgb(248, 192, 255);
-    animation: changeColor 1.5s linear infinite;
+    background-color: rgb(229,105,139);
+    border: none;
+    border-radius: 0.5rem;
+    rotate: -20deg;
+    box-shadow: -8px 8px 0px 0px rgba(186,17,86);
+    font-size: 1.2rem;
 }
 
-@keyframes changeColor {
-    0% {
-        background-color: rgb(245, 137, 155);
-    }
-  50% {
-background-color: rgb(231, 52, 216);
-  }
-  100% {
-    background-color: rgb(245, 137, 155);
-  }
+.click-me {
+    animation: clickMeAnimation ease 2s infinite;
 }
+
+@keyframes clickMeAnimation {
+    0% {
+        font-size: 1.2rem;
+    }
+    50% {
+        font-size: 1.5rem;
+    }
+    100% {
+        font-size: 1.2rem;
+    }
+}
+
 
 .calculate-btn:hover {
-    background: linear-gradient(0deg, rgb(245, 137, 155) 0%, rgb(231, 52, 216) 100%);
+    background-color: rgb(240, 137, 164);
 }
+
+.calculate-btn:active {
+    transform: translate(-8px, 8px);
+  -webkit-transform: translate(-8px, 8px);
+  box-shadow: -1px 1px 0px 0px rgba(186,17,86);
+}
+
+.slide-away {
+    animation: slideAway 2s ease forwards;
+}
+
+@keyframes slideAway {
+    0% {
+        transform: none;
+    }
+    100% {
+        transform: translateX(-42%);
+    }
+    
+}
+
+
+
 
 .ans-calculator {
     position: absolute;
-    width: 40rem;
+    width: 35rem;
     text-align: center;
-    right: 60rem;
-    top: 25rem;
-    line-height: 4rem;
+    right: 30rem;
+    top: 20rem;
+    line-height: 5rem;
+    padding: 2rem;
+    padding-left: 10rem;
+    animation: fadeInLeft ease 3s;
+    background: #fff;
+    border-radius: 3rem;
+    box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
+    text-align: center;
+}
+
+@keyframes fadeInLeft {
+from {opacity: 0;
+    transform: translate3d(-30%, 0, 0)}
+  to {opacity: 0.9;
+    transform: translate3d(0, 0, 0)}
 }
 
  .talk-text {
@@ -312,7 +373,6 @@ background-color: rgb(231, 52, 216);
     color: #ab66e7;
     font-size: 4rem;
     border-radius: 10px;
-    /* top: 10%; */
     text-decoration: none;
     position: relative;
     cursor: default;
