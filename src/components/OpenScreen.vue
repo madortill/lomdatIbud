@@ -2,8 +2,8 @@
     <div id="open-screen">
        <div class="loading">
           <div class="gears">
-            <img class="gear one" src="@/assets/media/gear1.png" alt="gear1">
-            <img class="gear two" src="@/assets/media/gear1.png" alt="gear2">
+            <img class="gear one" src="@/assets/media/gear2.png" alt="gear1">
+            <img class="gear two" src="@/assets/media/gear2.png" alt="gear2">
             <h1 class="lomdat text-title">לומדת</h1>
             <h1 class="aibud text-title">עיבוד</h1>
             <button class="btnNext" @click = "startTutorial"> התחל </button>
@@ -76,7 +76,8 @@ export default {
     font-size: 2.6rem;
     color: #ffffff;
     border-radius: 100px;
-    background-color: rgb(201,165,249);
+    /* background-color: rgb(201,165,249); */
+    background-color: rgb(148,112,181);
     width: 10vw;
   font-family: 'Heebo-Bold';
 
@@ -107,7 +108,7 @@ export default {
 
 
 .aibud {
-  bottom: 30vh;
+  bottom: 29vh;
   right: 56vw;
 }
 
@@ -151,7 +152,7 @@ export default {
   /* transform: scale(1.5%); */
   /* width: 60vw; */
   /* height: 65vh; */
-  height: 35rem;
+  height: 42rem;
   margin: 0 auto;
   border-radius: 50%;
   background: var(--stroke-color);
@@ -183,12 +184,12 @@ export default {
   /* bottom: 18vh; */
   bottom: 12rem;
   /* right: 5vw; */
-  right: 5rem;
+  right: 8.5rem;
 
 }
 .gear.two {
   top: 5rem;
-  left: 3rem;
+  left: 7rem;
 }
 .gear .bar {
   position: absolute; left: -15px; top: 50%;

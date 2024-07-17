@@ -30,8 +30,9 @@
 
     <openScreen v-if="page === 0"  @next-page="nextPage"></openScreen>
     <navbar v-if="showNav" :titleIndex="titleIndex" @chosen-title="chosenPage"></navbar>
-    <basic-principles v-if="page === 1" @next-page="nextPage"></basic-principles>
-    <process v-if="page === 2" @next-page="nextPage"></process>
+    <basic-principles v-if="page === 1" @next-page="nextPage" :whereBeen="whereBeen"></basic-principles>
+    <process v-if="page === 2" @next-page="nextPage" :whereBeen="whereBeen"></process>
+    <preparation v-if="page === 3" @next-page="nextPage"></preparation>
 
 
   </div>
@@ -42,6 +43,7 @@ import OpenScreen from "@/components/OpenScreen.vue";
 import Navbar from '@/components/Navbar.vue';
 import BasicPrinciples from '@/components/BasicPrinciples.vue';
 import Process from '@/components/Process.vue';
+import Preparation from '@/components/Preparation.vue';
 
 export default {
   name: "app",
@@ -50,6 +52,7 @@ export default {
     Navbar,
     BasicPrinciples,
     Process,
+    Preparation,
   },
 
   data() {
@@ -59,6 +62,7 @@ export default {
       showNav: true,
       showAbout: false,
       clickBtn: 0,
+      whereBeen: [1],
     };
   },
   methods: {
@@ -71,6 +75,10 @@ export default {
       this.titleIndex = index;
       this.page = this.titleIndex + 1;
       console.log(this.page);
+
+      if (!this.whereBeen.includes(page)) {
+        this.whereBeen.push(page);
+      }
     },
 
     openAbout() {

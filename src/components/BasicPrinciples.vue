@@ -8,12 +8,6 @@
     <div v-if="clicked===1" class="why-ibud">
         <p class = "talk-text why-title"> מדוע קיים שלב העיבוד? </p>
 
-            <!-- <div v-if="showArrowToClick" class="click-this"> -->
-            <!-- </div>     -->
-
-        <!-- <div class="circles-container"> -->
-            
-
             <div class="circle circle0" >
                 <p> {{ circlesArray[0] }} </p></div>
             
@@ -22,8 +16,6 @@
             
             <div class="circle circle2" >
                 <p> {{ circlesArray[2] }} </p></div>
-            
-       <!-- </div> -->
 
     </div>
 
@@ -35,7 +27,7 @@
     </div>
 
     <div v-if="clicked===3" class="question">
-        <!-- <p class = "talk-text"> שאלת וידוא הבנה </p> -->
+
         <div class="question-text">
             <h3> חשבו וענו : האם המשפט הבא נכון או לא נכון? </h3>
             <h1 > בשלב העיבוד אני אוספת נתונים רבים כגון ציטוטים ותיאורים. </h1>
@@ -66,6 +58,7 @@
 <script>
 export default {
     name: "basic-principles",
+    props: ['whereBeen'],
     data() {
         return {
             clicked: 0,
@@ -92,6 +85,8 @@ export default {
     methods: {
         next() {
             this.clicked++;
+
+            // if (this.whereBeen.includes())
             },
         prev() {
             this.clicked--;

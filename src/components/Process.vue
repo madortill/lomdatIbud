@@ -27,7 +27,7 @@
            
             <div class="calculator" :class="{'slide-away' : slideAwayAnimation}">
                 <h3 class="how-calculator" > {{ definitionArray[0] }} </h3>
-                <button class="calculate-btn" @click="clickedCalculator" :class="{'click-me' : !showAnsCalculator}"> לחצו כאן! </button>
+                <button class="calculate-btn" @click="clickedCalculator" :class="{'click-me' : !showAnsCalculator}"> {{ calculatorBtnText }} </button>
                 
             </div>
             <div class="calc-bg"></div>
@@ -35,7 +35,7 @@
         </div>
 
 
-        <div v-if="clicked===2" class="">
+        <div v-if="clicked===2" class="example">
             <p class = "talk-text"> לדוגמה...</p>
            
         </div>
@@ -43,7 +43,7 @@
 
         <div v-if="clicked===3" class="flip-card-container">
             <div v-for="( item, index) in arrayFront" :key="index" :class="['flip-card', this.onStart]">
-                <div class="flip-card-inner" :style="`--hue: ${index * 20 }deg`">
+                <div class="flip-card-inner" :style="`--hue: ${index * 8 + 270 }deg`">
                     <div class="flip-card-front">
                         <img :src="src(item)" class="imgFront">
                     </div>
@@ -60,7 +60,6 @@
         </div>
 
         
-
         <button v-if="clicked===4" class="btnNext" @click = "nextPage"> המשך </button>
     </div>
 </template>
@@ -68,6 +67,8 @@
 <script>
 export default {
     name: "process",
+    props: ['whereBeen'],
+
     data() {
         return {
             clicked: 0,
@@ -92,6 +93,7 @@ export default {
 
             ideaIconSrc: '@/assets/media/ideaIcon-noColor.png',
 
+            calculatorBtnText: ' לחצו כאן! ',
             showAnsCalculator: false,
             slideAwayAnimation: false,
 
@@ -134,7 +136,8 @@ export default {
         },
         clickedCalculator() {
             this.slideAwayAnimation = true;
-        this.showAnsCalculator = true;
+            this.showAnsCalculator = true;
+            this.calculatorBtnText = '';
            
         },
 
@@ -463,19 +466,17 @@ from {opacity: 0;
     background-color: hsl(var(--hue), 75%, 60%);
     border-radius: 30px;
     color: black;
-    /* cursor: pointer; */
 }
 
 .flip-card-back {
-    background-color: #7B2CBF;
+    background-color: #ab66e7;
     border-radius: 30px;
-    color: rgb(84, 82, 82);
+    color: white;
     transform: rotateY(180deg);
     text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* cursor: pointer; */
 }
 
 .imgFront {
