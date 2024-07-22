@@ -33,6 +33,8 @@
     <basic-principles v-if="page === 1" @next-page="nextPage" :whereBeen="whereBeen"></basic-principles>
     <process v-if="page === 2" @next-page="nextPage" :whereBeen="whereBeen"></process>
     <preparation v-if="page === 3" @next-page="nextPage"></preparation>
+    <practice v-if="page === 4" @next-page="nextPage"></practice>
+    <end-screen v-if="page === 5"></end-screen>
 
 
   </div>
@@ -44,6 +46,10 @@ import Navbar from '@/components/Navbar.vue';
 import BasicPrinciples from '@/components/BasicPrinciples.vue';
 import Process from '@/components/Process.vue';
 import Preparation from '@/components/Preparation.vue';
+import Practice from '@/components/Practice.vue';
+import EndScreen from '@/components/EndScreen.vue';
+
+
 
 export default {
   name: "app",
@@ -53,6 +59,9 @@ export default {
     BasicPrinciples,
     Process,
     Preparation,
+    Practice,
+    EndScreen,
+
   },
 
   data() {
