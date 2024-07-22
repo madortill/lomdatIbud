@@ -2,13 +2,20 @@
   
   <div id="preparation-page">
 
+<p class = "title"> בעת ההכנה לשיחת המשוב, החונך יתמקד בדברים הבאים: </p>
 
-הכנה לשיחת משוב
-פליפ קארדס?
-
-
-
-
+        <div  class="flip-card-container">
+            <div v-for="( item, index) in arrayFront" :key="index" :class="['flip-card', this.onStart]">
+                <div class="flip-card-inner" :style="`--hue: ${index * 8 + 270 }deg`">
+                    <div class="flip-card-front">
+                        <img :src="src(item)" class="imgFront">
+                    </div>
+                    <div class="flip-card-back">
+                        <h1 class="textBack">{{ arrayBack[index] }} </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -32,8 +39,8 @@ export default {
     data() {
         return {
             clicked: 0,
-            arrayFront: ['', '', '',''],
-            arrayBack: ['', '', '', ''],
+            arrayFront: ['lightning.png', 'list.png', 'pencil.png'],
+            arrayBack: ['תופעות עיקריות', 'כמות תופעות', 'הכנה עצמית'],
 
         };
     },
@@ -63,10 +70,117 @@ export default {
 
 <style scoped>
 
+/* כרטיסים מתהפכים */
+
+.flip-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: absolute;
+    left: 17%;
+    height: 50%;
+    bottom: 22%;
+}
+
+.flip-card {
+    background-color: transparent;
+    border-radius: 100% ;
+    width: 22rem;
+    height: 22rem;
+    perspective: 1000px;
+    margin: 2rem;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.flip-card:hover .flip-card-front, .flip-card.start .flip-card-front{
+    transform: rotateY(180deg);
+}
+
+.flip-card:hover .flip-card-back, .flip-card.start .flip-card-back{
+    transform: rotateY(360deg)
+}
+
+.flip-card-front,
+.flip-card-back {
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    background-color: hsl(var(--hue), 75%, 60%);
+    border-radius: 100%;
+    color: black;
+}
+
+.flip-card-back {
+    background-color: hsl(var(--hue), 75%, 60%);
+    border-radius: 100%;
+    color: white;
+    transform: rotateY(180deg);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgFront {
+    width: 70%;
+    position: absolute;
+    left: 17%;
+    top: 13%;
+}
+
+.over-me {
+    position: absolute;
+    top: 70%;
+    right: 10%;
+    font-size: 1.2rem;
+    color: #5f5a5a;
+}
+
+.textBack {
+    padding: 5%;
+}
 
 
+/* כותרת */
 
-.talk-text {
+
+.title {
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Heebo-Bold';
+    position: relative;
+    top: 2rem;
+    animation: floatAnimation 3s ease-in-out infinite;
+
+}
+
+@keyframes floatAnimation {
+0% {
+    transform: translateY(0);
+}
+50% {
+    transform: translateY(-8px);
+}
+100% {
+    transform: translateY(0);
+}
+}
+
+/* .talk-text {
     margin: 2%;
     animation: floatAnimation 3s ease-in-out infinite;
     color: #ab66e7;
@@ -110,8 +224,9 @@ export default {
 .talk-text:hover:before {
     visibility: visible;
     transform: scaleX(1.5);
-}
+} */
 
+/* כפתורים */
 
 .btnNext {
     position: absolute;

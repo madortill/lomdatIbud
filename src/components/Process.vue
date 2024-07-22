@@ -40,8 +40,29 @@
            
         </div>
 
+        <div v-if="clicked===3" class="wording">
+            <p class = "talk-text"> ניסוח תופעה </p>
 
-        <div v-if="clicked===3" class="flip-card-container">
+            <div class="logout">
+                <div class="doorway">
+                    <div class="door">
+                        <span></span>
+                    </div>
+
+                </div>
+            </div>
+           
+        </div>
+
+        <div v-if="clicked===4" class="wording-steps">
+            <p class = "talk-text"> ניסוח תופעה - שלבים </p>
+           
+        </div>
+
+
+        <div v-if="clicked===5" >
+            <p class = "talk-text"> נגדיר תופעה תוך הקפדה על ארבעת הכללים הבאים: </p>
+            <div class="flip-card-container">
             <div v-for="( item, index) in arrayFront" :key="index" :class="['flip-card', this.onStart]">
                 <div class="flip-card-inner" :style="`--hue: ${index * 8 + 270 }deg`">
                     <div class="flip-card-front">
@@ -53,14 +74,15 @@
                 </div>
             </div>
         </div>
+        </div>
 
         <div class="prev-next-btns">
-            <button v-if="clicked>=1 && clicked<=4" @click = "prev" class="prev btnNext"> חזור </button>
-            <button v-if="clicked<4" @click = "next" class="next btnNext"> הבא </button>
+            <button v-if="clicked>=1 && clicked<=5" @click = "prev" class="prev btnNext"> חזור </button>
+            <button v-if="clicked<5" @click = "next" class="next btnNext"> הבא </button>
         </div>
 
         
-        <button v-if="clicked===4" class="btnNext" @click = "nextPage"> המשך </button>
+        <button v-if="clicked===5" class="btnNext" @click = "nextPage"> המשך </button>
     </div>
 </template>
 
@@ -164,6 +186,8 @@ p {
     text-align: center;
 }
 
+/* תהליך עיבוד התצפית */
+
 .what-to-do-text {
     position: absolute;
     top: 12rem;
@@ -250,10 +274,12 @@ p {
     }
 }
 
+
+/* הגדרת תופעה */
+
 .definition-title {
     text-align: center;
 }
-
 
 .calculator {
     background-image: url(@/assets/media/calculator2.png);
@@ -344,9 +370,6 @@ p {
     
 }
 
-
-
-
 .ans-calculator {
     position: absolute;
     width: 35rem;
@@ -369,6 +392,59 @@ from {opacity: 0;
   to {opacity: 0.9;
     transform: translate3d(0, 0, 0)}
 }
+
+
+/* ניסוח תופעה */
+
+.logout {
+  margin: auto;
+  border: 1rem solid lightgray;
+  position: relative;
+  width: 17.5rem;
+  height: 19.5rem;
+  cursor: pointer;
+}
+.logout .doorway {
+  position: absolute;
+  width: 17.5rem;
+  height: 19.5rem;
+  background-color: #fff;
+}
+.logout .doorway .door {
+  transition: transform 0.1s;
+  transform-style: preserve-3d;
+  transform-origin: 0% 0%;
+  width: 100%;
+  height: 100%;
+  transform: perspective(900) rotateY(0deg);
+  -webkit-transform: perspective(900) rotateY(0deg);
+  background-color: #c35dff;
+ position: relative;
+}
+
+.logout:hover .door {
+    transform: perspective(900) rotateY(75deg);
+  -webkit-transform: perspective(900) rotateY(75deg);
+  transition: all 2s ease-in-out;
+}
+.door span {
+  position:  absolute;
+  width: 1rem;
+  height: 1rem;
+  border-radius:50%;
+  display:block;
+  background-color: lightgray;
+  top:9rem;
+  left:15rem
+}
+
+
+
+
+
+
+
+/* כותרות */
 
  .talk-text {
     margin: 2%;
@@ -416,6 +492,9 @@ from {opacity: 0;
     transform: scaleX(1.5);
 }
 
+
+
+/* כרטיסים מתהפכים */
 
 .flip-card-container {
     display: flex;
@@ -500,6 +579,8 @@ from {opacity: 0;
 }
 
 
+
+/* כפתורים */
 
 .btnNext {
     position: absolute;
