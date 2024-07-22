@@ -39,7 +39,7 @@ export default {
     data() {
         return {
             clicked: 0,
-            arrayFront: ['lightning.png', 'list.png', 'pencil.png'],
+            arrayFront: ['pheno.svg', 'amount.svg', 'brain.svg'],
             arrayBack: ['תופעות עיקריות', 'כמות תופעות', 'הכנה עצמית'],
 
         };
@@ -128,6 +128,7 @@ export default {
     background-color: hsl(var(--hue), 75%, 60%);
     border-radius: 100%;
     color: white;
+    font-size: 1.5rem;
     transform: rotateY(180deg);
     text-align: center;
     display: flex;

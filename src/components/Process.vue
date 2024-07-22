@@ -43,25 +43,56 @@
         <div v-if="clicked===3" class="wording">
             <p class = "talk-text"> ניסוח תופעה </p>
 
-            <div class="logout">
-                <div class="doorway">
-                    <div class="door">
-                        <span></span>
-                    </div>
+            <div  class="logout">  </div>
+            <div class="doorway" :class="{'grow' : growAnimation}" >  
 
-                </div>
+                <p> {{ arrayWording[2] }} </p>
+                <p class="body-explanation" v-if="explainBody"> {{ arrayWording[3] }} </p>
+
+
+                <button v-if="showButton" @click="moveToSummary"> ואז... </button>
             </div>
-           
+
+
+            <div  class="door" @click="openDoor" :class="{'open-door' : openDoorAnimation}">
+                    <p> {{ arrayWording[0] }}</p>
+                    <p class="opening-explanation"> {{ arrayWording[1] }} </p>
+                        <span></span>
+            </div>
+            
         </div>
 
         <div v-if="clicked===4" class="wording-steps">
-            <p class = "talk-text"> ניסוח תופעה - שלבים </p>
+            <p class = "steps-title"> ניסוח תופעה - השלבים </p>
+
+                <div class="steps-container">
+
+                    <div class="step"> {{ arraySteps[0] }} </div>
+                    <div class="step"> {{ arraySteps[1] }} </div>
+                    <div class="step"> {{ arraySteps[2] }} </div>
+                    <div class="step"> {{ arraySteps[3] }} </div>
+                    <div class="step"> {{ arraySteps[4] }} </div>
+                    <div class="step"> {{ arraySteps[5] }} </div>
+
+                </div>
+
+                <div class="numbers-container">
+
+                    <img class="num" src="@/assets/media/1.png" alt="1">
+                    <img class="num" src="@/assets/media/2.png" alt="2">
+                    <img class="num" src="@/assets/media/3.png" alt="3">
+                    <img class="num" src="@/assets/media/4.png" alt="4">
+                    <img class="num" src="@/assets/media/5.png" alt="5">
+                    <img class="num" src="@/assets/media/6.png" alt="6">
+
+                </div>
+            
            
         </div>
 
 
         <div v-if="clicked===5" >
-            <p class = "talk-text"> נגדיר תופעה תוך הקפדה על ארבעת הכללים הבאים: </p>
+            <p class = "title"> נגדיר תופעה תוך הקפדה על ארבעת הכללים הבאים: </p>
             <div class="flip-card-container">
             <div v-for="( item, index) in arrayFront" :key="index" :class="['flip-card', this.onStart]">
                 <div class="flip-card-inner" :style="`--hue: ${index * 8 + 270 }deg`">
@@ -98,8 +129,24 @@ export default {
             definitionArray: [' כיצד נגדיר תופעה? ',
                 ' עלינו לנתח את הסימפטומים ולמצוא מכנה משותף או מספר מכנים משותפים. לאחר מכן נוכל להבין מה התופעה. ',
             ],
-            arrayFront: ['', '', '',''],
+            arrayFront: ['positivity.svg', 'objective.svg', 'target.svg','list.svg'],
             arrayBack: ['חיוביות', 'אובייקטיביות', 'דיוק', 'פירוט'],
+
+            arrayWording: ['פתיחה',
+            'תיאור כללי של התופעה',
+            'גוף',
+            'דוגמאות, עובדות (סימפטומים)',
+            'סיכום',
+            'המחשת צורך לתופעה'],
+
+            arraySteps: ['קריאת התצפית פעמיים ברצף',
+                'סימון רישומים רלוונטיים',
+                'סיווג סימפטומים לפי תחומים',
+                'מציאת תופעות לשימור ולשיפור',
+                'בחירת תופעות להעלאה במשוב',
+                'השערת המקור לתופעות',
+            ],
+
             index: 0,
             onStart: 'start',
 
@@ -119,6 +166,10 @@ export default {
             showAnsCalculator: false,
             slideAwayAnimation: false,
 
+            openDoorAnimation: false,
+            growAnimation: false,
+            explainBody: false,
+            showButton: true,
 
         };
     },
@@ -163,6 +214,20 @@ export default {
            
         },
 
+        openDoor() {
+            this.openDoorAnimation = true;
+            this.explainBody = true;
+        },
+
+        moveToSummary() {
+            this.arrayWording[2] = this.arrayWording[4];
+            this.arrayWording[3] = this.arrayWording[5];
+            this.showButton = false;
+            // setTimeout(() => {
+            //         this.growAnimation = true;
+            //     }, 2000);
+        },
+     
 
         src(name) {
             return new URL(`../assets/media/${name}`, import.meta.url).href
@@ -179,6 +244,56 @@ export default {
 
 
 <style scoped>
+
+
+/* כותרות */
+
+.talk-text {
+    margin: 2%;
+    animation: floatAnimation 3s ease-in-out infinite;
+    color: #ab66e7;
+    font-size: 4rem;
+    border-radius: 10px;
+    text-decoration: none;
+    position: relative;
+    cursor: default;
+    font-family: 'Heebo-Bold';
+}
+
+@keyframes floatAnimation {
+0% {
+    transform: translateY(0);
+}
+50% {
+    transform: translateY(-8px);
+}
+100% {
+    transform: translateY(0);
+}
+}
+
+.talk-text:hover {
+    color: #ab66e7;
+}
+
+.talk-text:before {
+    content: "";
+    position: absolute;
+    width: 40%;
+    height: 2px;
+    bottom: 0;
+    right: 30%;
+    background-color: #ab66e7;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.talk-text:hover:before {
+    visibility: visible;
+    transform: scaleX(1.5);
+}
+
 h3 {
     font-size: 1.5rem;
 }
@@ -402,15 +517,48 @@ from {opacity: 0;
   position: relative;
   width: 17.5rem;
   height: 19.5rem;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
-.logout .doorway {
-  position: absolute;
+
+
+ .doorway {
+  position: fixed;
   width: 17.5rem;
   height: 19.5rem;
   background-color: #fff;
+  text-align: center;
+  font-family: "Heebo-Bold";
+font-size: 2rem;
+ /* line-height: 4rem; */
+ vertical-align: middle;
+ top: 20rem;
+ right: 51.3rem;
+
 }
-.logout .doorway .door {
+
+.doorway p {
+  width: 14rem;
+}
+
+
+.doorway button {
+    cursor: pointer;
+    position: relative;
+    bottom: 3rem;
+    left: 1.5rem;
+    width: 4rem;
+    box-shadow: 0px 2px 0px 0px #000000;
+    border-radius: 5rem;
+    font-family: "Heebo";
+    background-color: #f2c4fd;
+
+}
+
+.doorway button:hover {
+    animation: hoverShine 200ms;
+}
+
+ .door {
   transition: transform 0.1s;
   transform-style: preserve-3d;
   transform-origin: 0% 0%;
@@ -420,9 +568,30 @@ from {opacity: 0;
   -webkit-transform: perspective(900) rotateY(0deg);
   background-color: #c35dff;
  position: relative;
+ text-align: center;
+ font-family: "Heebo-Bold";
+font-size: 3rem;
+ /* line-height: 10rem; */
+ width: 17.5rem;
+  height: 19.5rem;
+  cursor: pointer;
+  bottom: 23.5rem;
+ right: 51.3rem;
+}
+.door p {
+    padding-top: 4rem;
+    margin-bottom: -4rem;
+}
+.opening-explanation {
+    font-family: "Heebo";
+    font-size: 2rem;
 }
 
-.logout:hover .door {
+
+
+/* .logout:hover */
+ /* .door:hover  */
+ .open-door{
     transform: perspective(900) rotateY(75deg);
   -webkit-transform: perspective(900) rotateY(75deg);
   transition: all 2s ease-in-out;
@@ -434,67 +603,111 @@ from {opacity: 0;
   border-radius:50%;
   display:block;
   background-color: lightgray;
-  top:9rem;
+  top:8.5rem;
   left:15rem
 }
 
+.body-explanation {
+    text-align: center;
+    line-height: 5rem;
+    font-family: "Heebo";
+    font-size: 2rem;
+}
+
+.grow {
+    animation: growAnimation 2.5s ease forwards;
+    z-index: 1;
+font-size: 3rem;
+
+}
+
+@keyframes growAnimation {
+    from {
+        /* width: 10rem;
+        height: 10rem; */
+    }
+    to {
+    box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
+    border-radius: 3rem;
+
+        transform: scaleY(1.1);
+        width: 100rem;
+
+        right: 10rem;
+
+    }
+}
 
 
+/* שלבים */
 
 
-
-
-/* כותרות */
-
- .talk-text {
-    margin: 2%;
-    animation: floatAnimation 3s ease-in-out infinite;
-    color: #ab66e7;
-    font-size: 4rem;
-    border-radius: 10px;
-    text-decoration: none;
+.steps-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
     position: relative;
-    cursor: default;
-    font-family: 'Heebo-Bold';
+    height: 80vh;
+    bottom: 1rem;
 }
 
-@keyframes floatAnimation {
-0% {
-    transform: translateY(0);
+.step {
+    margin-top: 2rem;
+    width: 40rem;
+    height: 5rem;
+    background-color: #f2c4fd;
+    color: #000000;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 5rem;
+    font-family: "Heebo-Bold";
+    border-radius: 5rem;
+    box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
 }
-50% {
-    transform: translateY(-8px);
-}
-100% {
-    transform: translateY(0);
-}
+.step:hover {
+    animation: hoverShine 200ms;
+    background-color: #dc94ee;
 }
 
-.talk-text:hover {
-    color: #ab66e7;
-}
-
-.talk-text:before {
-    content: "";
+.steps-title {
     position: absolute;
-    width: 40%;
-    height: 2px;
-    bottom: 0;
-    right: 30%;
-    background-color: #ab66e7;
-    visibility: hidden;
-    transform: scaleX(0);
-    transition: all 0.3s ease-in-out 0s;
+    right: 7%;
+    top: 20%;
+    width: 25rem;
+    font-family: "Heebo-Bold";
+    font-size: 3rem;
+    animation: floatAnimation 3s ease-in-out infinite;
 }
 
-.talk-text:hover:before {
-    visibility: visible;
-    transform: scaleX(1.5);
+.numbers-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    position: absolute;
+    height: 85vh;
+    right: 32vw;
+    bottom: 2rem;
+}
+
+.num {
+    width: 6rem;
+    height: 6rem;
 }
 
 
 
 /* כרטיסים מתהפכים */
+
+.title {
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Heebo-Bold';
+    position: relative;
+    top: 2rem;
+    animation: floatAnimation 3s ease-in-out infinite;
+}
 
 .flip-card-container {
     display: flex;
@@ -502,9 +715,9 @@ from {opacity: 0;
     align-items: center;
     flex-wrap: wrap;
     position: absolute;
-    left: 18%;
+    left: 16%;
     height: 50%;
-    bottom: 25%;
+    bottom: 24%;
 }
 
 .flip-card {
@@ -550,6 +763,7 @@ from {opacity: 0;
 .flip-card-back {
     background-color: #ab66e7;
     border-radius: 30px;
+    font-size: 1.5rem;
     color: white;
     transform: rotateY(180deg);
     text-align: center;

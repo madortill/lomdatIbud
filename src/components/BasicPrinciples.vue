@@ -2,7 +2,13 @@
 <div id="basic-principles-page">
     <div v-if="clicked===0" class="what-is-ibud explain-bg">
                 <p class = "talk-text">מהו עיבוד?</p>
-                <p class ="explain-text"> {{ explainArray[0] }} </p>
+                <p class ="explain-text"> 
+
+                    שלב בו מתרחש 
+                    <b> ניתוח </b>
+                     נתונים שאספנו במהלך התצפית והפיכתם למידע בעל משמעות.
+
+                </p>
     </div>
 
     <div v-if="clicked===1" class="why-ibud">
@@ -386,11 +392,11 @@ export default {
     right: 10rem;
     height: 5rem;
     width: 10rem;
-    font-family: "Heebo-Bold";
+    font-family: "Heebo";
     font-size: 1.5rem;
     box-shadow: 0px 5px 0px 0px #000000;
     cursor: pointer;
-    background-color: #c5d6f7;
+    background-color: #f2c4fd;
 }
 
 .not-correct-btn {
@@ -400,11 +406,11 @@ export default {
     left: 10rem;
     height: 5rem;
     width: 10rem;
-    font-family: "Heebo-Bold";
+    font-family: "Heebo";
     font-size: 1.5rem;
     box-shadow: 0px 5px 0px 0px #000000;
     cursor: pointer;
-    background-color: #c5d6f7;
+    background-color: #f2c4fd;
 }
 
 .correct-btn:hover,
