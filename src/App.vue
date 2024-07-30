@@ -29,9 +29,9 @@
       </Transition>
 
     <openScreen v-if="page === 0"  @next-page="nextPage"></openScreen>
-    <navbar v-if="showNav" :titleIndex="titleIndex" @chosen-title="chosenPage"></navbar>
-    <basic-principles v-if="page === 1" @next-page="nextPage" :whereBeen="whereBeen"></basic-principles>
-    <process v-if="page === 2" @next-page="nextPage" :whereBeen="whereBeen"></process>
+    <navbar v-if="showNav" :titleIndex="titleIndex" @chosen-title="chosenPage" :maxNavPos="maxNavPos"></navbar>
+    <basic-principles v-if="page === 1" @next-page="nextPage"></basic-principles>
+    <process v-if="page === 2" @next-page="nextPage"></process>
     <preparation v-if="page === 3" @next-page="nextPage"></preparation>
     <practice v-if="page === 4" @next-page="nextPage"></practice>
     <end-screen v-if="page === 5"></end-screen>
@@ -71,13 +71,14 @@ export default {
       showNav: true,
       showAbout: false,
       clickBtn: 0,
-      whereBeen: [1],
+      maxNavPos: 0
     };
   },
   methods: {
     nextPage() {
       this.page++;
       this.titleIndex++;
+      this.maxNavPos = Math.max(this.maxNavPos, this.titleIndex);
     },
 
     chosenPage(index) {
@@ -85,9 +86,7 @@ export default {
       this.page = this.titleIndex + 1;
       console.log(this.page);
 
-      if (!this.whereBeen.includes(page)) {
-        this.whereBeen.push(page);
-      }
+      this.maxNavPos = Math.max(this.maxNavPos, index);
     },
 
     openAbout() {

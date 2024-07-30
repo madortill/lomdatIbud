@@ -1,8 +1,14 @@
 <template>
     <div id="end-screen">
 
+        <div v-if="clicked===0" class="summary">
+אגחיק
 
+            <button v-if="clicked===0" @click = "next" class="next btnNext"> לסיום </button>
 
+        </div>
+
+        <div v-if="clicked===1" class="end">
         <h1 class="finale-text"> כל הכבוד! 
             <br>
             סיימת את לומדת העיבוד!
@@ -10,11 +16,15 @@
 
         <h2> לומדה 4 מתוך 5 במארז הלמידה </h2>
 
-        <button @click="closeWindow" class="btnNext"> סגירה </button>
+        <button @click="closeWindow" class="btnNext-end"> סגירה </button>
 
         <img class="gear one" src="@/assets/media/gear1.png" alt="gear1">
         <img class="gear two" src="@/assets/media/gear1.png" alt="gear2">
         <img class="gear three" src="@/assets/media/gear2.png" alt="gear3">
+
+
+        </div>
+        
 
      
     </div>
@@ -29,6 +39,8 @@ export default {
     },
     data() {
         return {
+            clicked: 0,
+
       
         };
     },
@@ -36,6 +48,15 @@ export default {
       
     },
     methods: {
+
+        next() {
+            this.clicked++;
+            },
+
+        prev() {
+            this.clicked--;
+        },
+
         closeWindow() {
             window.close(); // סוגר את חלון האתר.
         },
@@ -69,8 +90,22 @@ export default {
 }
 }
 
-
 .btnNext {
+    position: absolute;
+    border: none;
+    cursor: pointer;   
+    height: 5%;
+    left: 10%;
+    bottom: 10%;
+    font-size: 2rem;
+    color: #ffffff;
+    border-radius: 100px;
+    background-color: #ab66e7;
+    z-index: 1;
+    width: 7vw;
+}
+
+.btnNext-end {
     position: absolute;
     border: none;
     cursor: pointer;   
@@ -85,12 +120,15 @@ export default {
   font-family: 'Heebo-Bold';
 }
 
+.btnNext-end,
 .btnNext {
   animation: borderPulse 4000ms infinite ease-out;
 }
 
-.btnNext:hover,
-.btnNext:focus {
+.btnNext,
+.btnNext-end:hover,
+.btnNext,
+.btnNext-end:focus {
   animation: borderPulse 4000ms infinite ease-out,  hoverShine 200ms;
 }
 
@@ -124,6 +162,12 @@ export default {
     background-image: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,.4) 100%);
   }
 }
+
+.next {
+  left: 10%;
+  text-align: center;
+
+} 
 
 .gear {
   position: absolute;

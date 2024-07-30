@@ -3,10 +3,10 @@
         <div class="container">
             <nav>
                 <ul>
-                    <li :class="{ active: titleIndex === 0 }" @click="chosenTitle(0)">עקרונות יסוד</li>
-                    <li :class="{ active: titleIndex === 1 }" @click="chosenTitle(1)">תהליך עיבוד התצפית</li>
-                    <li :class="{ active: titleIndex === 2 }" @click="chosenTitle(2)">הכנה לשיחת משוב</li>
-                    <li :class="{ active: titleIndex === 3 }" @click="chosenTitle(3)">תרגול מסכם</li>
+                    <li :class="{ active: titleIndex === 0, disabled: 0 > maxNavPos }" @click="chosenTitle(0)">עקרונות יסוד</li>
+                    <li :class="{ active: titleIndex === 1, disabled: 1 > maxNavPos }" @click="chosenTitle(1)">תהליך עיבוד התצפית</li>
+                    <li :class="{ active: titleIndex === 2, disabled: 2 > maxNavPos }" @click="chosenTitle(2)">הכנה לשיחת משוב</li>
+                    <li :class="{ active: titleIndex === 3, disabled: 3 > maxNavPos }" @click="chosenTitle(3)">תרגול מסכם</li>
                 </ul>
             </nav>
         </div>
@@ -16,7 +16,7 @@
 <script>
 export default {
     name: 'navbar',
-    props: ["titleIndex"],
+    props: ["titleIndex", "maxNavPos"],
     data() {
         return {
 
@@ -24,7 +24,9 @@ export default {
     },
     methods: {
         chosenTitle(index) {
-            this.$emit('chosen-title', index);
+            if (index <= this.maxNavPos) {
+                this.$emit('chosen-title', index);
+            }
         },
     },
 };
@@ -76,10 +78,14 @@ nav ul li.active {
     color: white;
 }
 
-nav ul li:hover {
+nav ul li:not(.disabled):hover {
     background: #c170ff8e;
     cursor: pointer;
     border-radius: 30px;
+}
+
+.disabled {
+    cursor: default;
 }
 </style>
   

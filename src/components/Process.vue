@@ -58,7 +58,6 @@
             <div class="symptoms"> סימפטומים </div>
             <div class="phenomenon"> תופעה </div>
 
-
         </div>
 
         <div v-if="clicked===3" class="wording">
@@ -84,7 +83,7 @@
         </div>
 
         <div v-if="clicked===4" class="wording-steps">
-            <p class = "steps-title"> ניסוח תופעה - השלבים </p>
+            <p class = "steps-title"> שלבי ניסוח תופעה </p>
 
                 <div class="steps-container">
 
@@ -128,13 +127,17 @@
         </div>
         </div>
 
+        <div v-if="clicked===6" >
+            <p class = "title-for-6"> כעת נעבור לנושא הבא: הכנה לשיחת המשוב </p>
+        </div>
+
         <div class="prev-next-btns">
-            <button v-if="clicked>=1 && clicked<=5" @click = "prev" class="prev btnNext"> חזור </button>
-            <button v-if="clicked<5" @click = "next" class="next btnNext"> הבא </button>
+            <button v-if="clicked>=1 && clicked<=6" @click = "prev" class="prev btnNext"> חזור </button>
+            <button v-if="clicked<6" @click = "next" class="next btnNext"> הבא </button>
         </div>
 
         
-        <button v-if="clicked===5" class="btnNext" @click = "nextPage"> המשך </button>
+        <button v-if="clicked===6" class="btnNext" @click = "nextPage"> המשך </button>
     </div>
 </template>
 
@@ -224,7 +227,6 @@ export default {
                 }, 100);
             };
             this.onStart = 'start';
-
         },
 
         showIbud() {
@@ -328,6 +330,14 @@ h3 {
 }
 p {
     text-align: center;
+}
+
+.title-for-6 {
+    text-align: center;
+    font-size: 4rem;
+    font-family: 'Heebo-Bold';
+    margin-top: 15rem;
+    animation: floatAnimation 3s ease-in-out infinite;
 }
 
 /* תהליך עיבוד התצפית */
@@ -561,7 +571,7 @@ from {opacity: 0;
     align-items: center; 
     justify-content: center;
     box-shadow: 15px 15px 20px -20px rgba(0, 0, 0, 0.4);
-    animation: fadeInAnimation ease 5s;
+    animation: fadeInAnimation ease 4s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -608,7 +618,7 @@ from {opacity: 0;
     width: 15rem;
     opacity: 0;
     animation: fadeInAnimation ease 5s;
-    animation-delay: 4s;
+    animation-delay: 2s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -628,7 +638,7 @@ from {opacity: 0;
     cursor: default;
     font-family: 'Heebo-Bold';
     animation: fadeInAnimation ease 5s;
-    animation-delay: 7s;
+    animation-delay: 4s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -652,7 +662,7 @@ from {opacity: 0;
     top: 37%;
     opacity: 0;
     animation: fadeInAnimation ease 5s;
-    animation-delay: 10s;
+    animation-delay: 6s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -664,7 +674,7 @@ from {opacity: 0;
     top: 37%;
     opacity: 0;
     animation: fadeInAnimation ease 5s;
-    animation-delay: 10s;
+    animation-delay: 6s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 }
@@ -676,7 +686,7 @@ from {opacity: 0;
     right: 5%;
     font-size: 2rem;
     font-family: 'Heebo-Bold';
-    animation: floatAnimation 3s ease-in-out infinite, fadeInAnimation 5s ease 12s 1 forwards;
+    animation: floatAnimation 3s ease-in-out infinite, fadeInAnimation 5s ease 8s 1 forwards;
 }
 
 .phenomenon {
@@ -686,7 +696,7 @@ from {opacity: 0;
     left: 10%;
     font-size: 2rem;
     font-family: 'Heebo-Bold';
-    animation: floatAnimation 3s ease-in-out infinite, fadeInAnimation 5s ease 12s 1 forwards;
+    animation: floatAnimation 3s ease-in-out infinite, fadeInAnimation 5s ease 8s 1 forwards;
 }
 
 /* ניסוח תופעה */
@@ -847,6 +857,7 @@ font-size: 3rem;
     font-family: "Heebo-Bold";
     border-radius: 5rem;
     box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
+    cursor: default;
 }
 .step:hover {
     animation: hoverShine 200ms;

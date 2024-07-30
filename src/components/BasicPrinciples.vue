@@ -350,21 +350,6 @@ export default {
     }
 }
 
- .target-img {
-    width: 25rem;
-    position: absolute;
-    bottom: 5rem;
-    right: 43rem;
-    /* animation: swing ease-in-out 1.3s infinite alternate; */
-}
-
-
-
-@keyframes swing {
-    0% { transform: rotate(3deg); }
-    100% { transform: rotate(-4deg); }
-}
-
 
 .question {
     text-align: center;
@@ -376,10 +361,6 @@ export default {
     height: 40%;
     left: 30%;
     bottom: 35%;
-    /* line-height: 5rem; */
-    /* background: #fff; */
-    /* border-radius: 3rem; */
-    /* box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4); */
     text-align: center;
     
 }
@@ -416,7 +397,6 @@ export default {
 .not-correct-btn:hover {
     animation: hoverShine 200ms;
     transform: scale(1.1);
-
 }
 
 .correct-btn:active,
@@ -427,10 +407,7 @@ export default {
 }
 
 .right-or-wrong {
-    /* position: relative; */
-    /* top: 13rem; */
     font-family: "Heebo-Bold";
-
 }
 
 .que-explanation {
@@ -445,11 +422,6 @@ export default {
   animation-duration: 2s;
   transform-origin: top center;
   z-index: 3;
-
-    /* bottom: -15rem; */
-    /* right: 10.5rem; */
-    /* animation: bounce 2s ease forwards; */
-    /* animation: drop 0.5s ease forwards; */
 }
 
 @keyframes fadeInUp {
@@ -457,35 +429,6 @@ from {opacity: 0;
     transform: translate3d(0, 100%, 0)}
   to {opacity: 1;
     transform: translate3d(0, 0, 0)}
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(-7rem);
-  }
-  40% {
-    transform: translateY(-8rem);
-  }
-  60% {
-    transform: translateY(-9rem);
-  }
-}
-
-@keyframes drop {
-
-0% {
-
-  opacity:0;
-
-}
-
-70% {
-  transform: translateY(30rem);
-}
-100% {
-  transform: translateY(25rem);
-  opacity: 1;
-}
 }
 
 .answer-bg {
