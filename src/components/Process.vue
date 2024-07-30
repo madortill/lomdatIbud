@@ -830,6 +830,9 @@ font-size: 3rem;
     position: relative;
     height: 80vh;
     bottom: 1rem;
+    animation: fadeInAnimation ease 5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
 .step {
@@ -869,6 +872,9 @@ font-size: 3rem;
     height: 85vh;
     right: 32vw;
     bottom: 2rem;
+    animation: fadeInAnimation ease 5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 }
 
 .num {
@@ -941,7 +947,8 @@ font-size: 3rem;
 }
 
 .flip-card-back {
-    background-color: #ab66e7;
+    /* background-color: #ab66e7; */
+    background-color: hsl(var(--hue), 75%, 60%);
     border-radius: 30px;
     font-size: 1.5rem;
     color: white;
