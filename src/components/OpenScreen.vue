@@ -149,9 +149,6 @@ export default {
 .gear {
   position: relative;
   z-index: 0;
-  /* transform: scale(1.5%); */
-  /* width: 60vw; */
-  /* height: 65vh; */
   height: 42rem;
   margin: 0 auto;
   border-radius: 50%;
@@ -160,7 +157,6 @@ export default {
 }
 .gear:before{
   position: absolute;
-  /* left: 5px; top: 5px; right: 5px; bottom: 5px; */
   z-index: 2;
   content: "";
   border-radius: 50%;

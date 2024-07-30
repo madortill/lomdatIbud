@@ -300,10 +300,9 @@ export default {
     align-items: center; 
     justify-content: center;
     box-shadow: 15px 15px 20px -20px rgba(0, 0, 0, 0.4);
-    transition: all 0.3s ease-in-out;
-
-    
+    transition: all 0.3s ease-in-out; 
 }
+
 .circle:hover {
     transform: scale(1.1);
 }

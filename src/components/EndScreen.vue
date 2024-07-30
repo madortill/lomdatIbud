@@ -1,5 +1,22 @@
 <template>
     <div id="end-screen">
+
+
+
+        <h1 class="finale-text"> כל הכבוד! 
+            <br>
+            סיימת את לומדת העיבוד!
+        </h1>
+
+        <h2> לומדה 4 מתוך 5 במארז הלמידה </h2>
+
+        <button @click="closeWindow" class="btnNext"> סגירה </button>
+
+        <img class="gear one" src="@/assets/media/gear2.png" alt="gear1">
+        <img class="gear two" src="@/assets/media/gear2.png" alt="gear2">
+
+
+
         <!-- <h3 class="conclusion-text">לסיכום</h3>
         <div class="finale-exe type-writer">
             <p v-for="(text, index) in array1" :key="text" :style="{
@@ -18,7 +35,7 @@
         </div> -->
 
 
-        
+
     </div>
 </template>
 
@@ -31,22 +48,13 @@ export default {
     },
     data() {
         return {
-            showClose: false,
-            array1: [
-                'מטרת על',
-                'החניך יעביר משוב אישי בצורה אפקטיבית.',
-                'מטרות ביניים',
-                'החניך יפרט עקרונות יסוד בשלב המשוב.',
-                ' החניך יפרט את הכללים והמבנה הנכון של שיחת המשוב. ',
-                'החניך יסביר את תהליך איתור מקורות אפשריים לתופעות במשוב.',
-                'החניך יפרט את תהליך התמודדות עם התנגדויות במשוב.'
-            ],
+            // showClose: false,
         };
     },
     mounted() {
-        setTimeout(() => {
-            this.showClose = true;
-        }, 23500);
+        // setTimeout(() => {
+        //     this.showClose = true;
+        // }, 23500);
     },
     methods: {
         closeWindow() {
@@ -59,176 +67,165 @@ export default {
 <style>
 
 #end-screen {
-    background-color: #ebdef8;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    position: relative;
-    justify-content: center;
-    counter-reset: lines;
-}
-
-.finale-exe {
-    position: absolute;
-    width: 40%;
-    height: 70%;
-    /* left: 30%; */
-    bottom: 20%;
-    background: #fff;
-    border-radius: 50px;
-    box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
-    text-align: center;
-    padding: 0 2rem;
-}
-
-.type-writer>p {
-    animation: typeWrite 2s var(--delay) steps(44) normal both, blink 400ms var(--delay) steps(45) 6;
-}
-.finish-exe {
-    position: absolute;
-    width: 100%;
-    height: 50%;
-    text-align: center;
-    background: #1F4E79;
-    bottom: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  text-align: center;
 }
 
 .finale-text {
-    color: white;
-    font-size: 3.5rem;
-}
-
-.conclusion-text {
-    color: #5f5a5a;
-    font-size: 1.7rem;
-    position: fixed;
-}
-
-@keyframes typeWrite {
-    from {
-        width: 0%;
-    }
-
-    to {
-        width: var(--width);
-    }
-}
-
-.finale-exe>p {
-    display: block;
-    width: fit-content;
-    white-space: nowrap;
-    text-align: right;
-    overflow: hidden;
-    border-left: solid 3px transparent;
-    max-width: fit-content;
-    margin: 4%;
+    color: rgb(148,112,181);
+    font-family: "Heebo-Bold";
+    font-size: 5rem;
+  
 }
 
 
-@keyframes blink {
-    to {
-        border-left-color: black;
-    }
-
-    from {
-        border-left-color: transparent;
-    }
-}
-
-.closeBtn {
+.btnNext {
     position: absolute;
     border: none;
-    cursor: pointer;
-    font-size: 1.6rem;
+    cursor: pointer;   
+    height: 7%;
+    left: 45%;
+    bottom: 20%;
+    font-size: 2.6rem;
     color: #ffffff;
     border-radius: 100px;
-    background-color: #0492bd;
-    min-width: 10%;
-    height: 10%;
-    top: 70%;
+    /* background-color: rgb(201,165,249); */
+    background-color: rgb(148,112,181);
+    width: 10vw;
+  font-family: 'Heebo-Bold';
+
+
 }
 
-.closeBtn:hover {
-    animation: borderPulse 4000ms infinite ease-out, hoverShine 200ms;
+
+.btnNext {
+  animation: borderPulse 4000ms infinite ease-out;
 }
 
-.about-div {
-    color: #F2F2F2;
-    position: absolute;
-    left: 5%;
-    bottom: 5%;
+
+.btnNext:hover,
+.btnNext:focus {
+  animation: borderPulse 4000ms infinite ease-out,  hoverShine 200ms;
 }
 
-.burgundy-lace {
-    position: relative;
-    width: 36%;
-    /* top: 0%; */
-    bottom: 11%;
-    right: 20%;
-    z-index: 1;
-}
-
-@keyframes expand {
+@keyframes borderPulse {
   0% {
-    transform: scale(0);
+    box-shadow: inset 0px 0px 0px 5px rgba(255, 255, 255,.4), 0px 0px 0px 0px rgba(255,255,255,1);
   }
-  100% {
-    transform: scale(1);
+  35% {
+    box-shadow: inset 0px 0px 0px 3px rgba(117, 117, 255,.2), 0px 0px 0px 10px rgba(255,255,255,0);
   }
-}
-
-.check-svg {
-  /* position: absolute; */
-  /* width: 100px;
-  height: 100px; */
-  display: inline-block;
-  right: -2%;
-  /* top :0%; */
-  transform-origin: center;  
-  animation: 1s cubic-bezier(0.77, 0, 0.175, 1) var(--delay) 1 both scaleCheck;
-  /* animation: name duration timing-function delay iteration-count direction fill-mode; */
-}
-
-
-.check-poly {
-  fill: transparent;
-  stroke-width: 2;
-  stroke-dasharray: 36px 36px;
-  stroke: #3374ff;
-  animation: 1s cubic-bezier(0.77, 0, 0.175, 1) var(--delay) 1 both drawCheck;
- }
-
-@keyframes scaleCheck {
-  0% {
-    opacity: 0;
-  }
-  1% {
-    opacity: 1;
-  }
-  100% {
-    transform: scale(1);
+  50% {
+    box-shadow: inset 0px 0px 0px 5px rgba(255, 255, 255,.4), 0px 0px 0px 0px rgba(255,255,255,1);
   } 
-}
-
-@keyframes drawCheck {
-  0% {
-    stroke-dashoffset: 36px;
+  75% {
+    box-shadow: inset 0px 0px 0px 3px rgba(117, 117, 255,.2), 0px 0px 0px 10px rgba(255,255,255,0);
   }
   100% {
-    stroke-dashoffset: 0;
+    box-shadow: inset 0px 0px 0px 5px rgba(255, 255, 255,.4), 0px 0px 0px 0px rgba(255,255,255,1);
   }
 }
 
-.check-list {
-    position: relative;
-    /* margin-top: 5%; */
+
+@keyframes hoverShine {
+  0%{
+    background-image: linear-gradient(135deg, rgba(255,255,255,.4) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%);
+  }
+  50%{
+    background-image: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.4) 50%, rgba(255,255,255,0) 100%);
+  }
+  100%{
+    background-image: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,.4) 100%);
+  }
 }
 
-/* .text-writer { */
-    /* position: relative; */
-/* } */
+.gear {
+  position: relative;
+  z-index: 0;
+  /* transform: scale(1.5%); */
+  /* width: 60vw; */
+  /* height: 65vh; */
+  height: 42rem;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: var(--stroke-color);
+ 
+}
+.gear:before{
+  position: absolute;
+  /* left: 5px; top: 5px; right: 5px; bottom: 5px; */
+  z-index: 2;
+  content: "";
+  border-radius: 50%;
+  background: var(--main-color);
+}
+.gear:after {
+  /* position: absolute; left: 25px; top: 25px; */
+  position: absolute; left: 25rem; top: 25rem;
+
+  z-index: 3;
+  content: "";
+  /* width: 70px; height: 70px; */
+  width: 70rem; height: 70rem;
+
+  border-radius: 50%;
+  border: 5px solid var(--stroke-color);
+  box-sizing: border-box;
+  background: var(--main-color);
+}
+.gear.one {
+  /* bottom: 18vh; */
+  bottom: 5rem;
+  /* right: 5vw; */
+  right: -30rem;
+  animation: clockwise 5s linear infinite;
+
+}
+
+.gear .bar {
+  position: absolute; left: -15px; top: 50%;
+  z-index: 0;
+  width: 150px; height: 30px;
+  margin-top: -15px;
+  border-radius: 5px;
+  background: var(--stroke-color);
+}
+.gear .bar:before {
+  position: absolute; left: 5px; top: 5px; right: 5px; bottom: 5px;
+  z-index: 1;
+  content: "";
+  border-radius: 2px;
+  background: var(--main-color);
+}
+.gear .bar:nth-child(2) {
+  transform: rotate(60deg);
+  -webkit-transform: rotate(60deg);
+}
+.gear .bar:nth-child(3) {
+  transform: rotate(120deg);
+  -webkit-transform: rotate(120deg);
+}
+
+
+@keyframes clockwise {
+  0% { -webkit-transform: rotate(0deg);}
+  100% { -webkit-transform: rotate(360deg);}
+}
+@keyframes anticlockwise {
+  0% { -webkit-transform: rotate(360deg);}
+  100% { -webkit-transform: rotate(0deg);}
+}
+@-webkit-keyframes clockwise {
+  0% { -webkit-transform: rotate(0deg);}
+  100% { -webkit-transform: rotate(360deg) ;}
+}
+@-webkit-keyframes anticlockwise {
+  0% { -webkit-transform: rotate(360deg);}
+  100% { -webkit-transform: rotate(0deg);}
+}
+.loading .gear.one, .loading .gear.three {
+    animation: clockwise 5s linear infinite;
+}
+.loading .gear.two {
+    animation: anticlockwise 5s linear infinite;
+}
 </style>

@@ -36,8 +36,29 @@
 
 
         <div v-if="clicked===2" class="example">
-            <p class = "talk-text"> לדוגמה...</p>
+            <p class = "example-title"> לדוגמה...</p>
+
+            <div class="circle circle0" >
+                <p> {{ circlesArray[0] }} </p></div>
+            
+            <div class="circle circle1" >
+                <p> {{ circlesArray[1] }} </p></div>
+            
+            <div class="circle circle2" >
+                <p> {{ circlesArray[2] }} </p></div>
            
+
+            <img class="arrow-for-example" src="@/assets/media/arrowForExample.png" alt="arrow">
+
+            <div class = "example-text"> תנועות ידיים לא ממחישות </div>
+
+            <img class="example-right" src="@/assets/media/exampleRight.png" alt="right">
+            <img class="example-left" src="@/assets/media/exampleLeft.png" alt="left">
+
+            <div class="symptoms"> סימפטומים </div>
+            <div class="phenomenon"> תופעה </div>
+
+
         </div>
 
         <div v-if="clicked===3" class="wording">
@@ -147,6 +168,11 @@ export default {
                 'השערת המקור לתופעות',
             ],
 
+            circlesArray: ['ידיים בכיסים',
+                'ידיים קרובות מדי לגוף',
+                'ידיים משולבות'
+            ],
+
             index: 0,
             onStart: 'start',
 
@@ -183,19 +209,22 @@ export default {
     methods: {
         next() {
             this.clicked++;
-            if(this.clicked===3) {
+            if(this.clicked===5) {
                 setTimeout(() => {
                     this.onStart = 'off';
                 }, 100);
             };
+            this.onStart = 'start';
             },
         prev() {
             this.clicked--;
-            if(this.clicked===3) {
+            if(this.clicked===5) {
                 setTimeout(() => {
                     this.onStart = 'off';
                 }, 100);
             };
+            this.onStart = 'start';
+
         },
 
         showIbud() {
@@ -508,6 +537,157 @@ from {opacity: 0;
     transform: translate3d(0, 0, 0)}
 }
 
+
+/* לדוגמה */
+
+.example-title {
+    text-align: center;
+    font-size: 2rem;
+    font-family: 'Heebo-Bold';
+    position: relative;
+    top: 2rem;
+}
+
+.circle {
+    border-radius: 100%;
+    height: 15rem;
+    width: 15rem;
+    bottom: 30%;
+    text-align: center;
+    font-weight: 600;
+    font-size: 2rem;
+    color: rgb(79, 77, 77);    
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    box-shadow: 15px 15px 20px -20px rgba(0, 0, 0, 0.4);
+    animation: fadeInAnimation ease 5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.circle p {
+    padding: 5%;
+}
+
+.circle0 {
+    background-color: #b97edb;
+    position: absolute;
+    top: 32%;
+    right: 22%;
+    
+}
+
+.circle1 {
+    background-color: #c998e6;
+    position: absolute;
+    align-self: center;
+    top: 37%;
+    right: 32%;
+}
+
+.circle2 {
+    background-color: #d7b9e9;
+    position: absolute;
+    top: 49%;
+    right: 21%;
+}
+
+.arrow-for-example {
+    position: absolute;
+    top: 45%;
+    right: 45%;
+    width: 15rem;
+    opacity: 0;
+    animation: fadeInAnimation ease 5s;
+    animation-delay: 4s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.example-text {
+    position: absolute;
+    margin: 2%;
+    top: 40%;
+    width: 20%;
+    left: 20%;
+    opacity: 0;
+    /* animation: floatAnimation 3s ease-in-out infinite; */
+    color: #ab66e7;
+    font-size: 4rem;
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: default;
+    font-family: 'Heebo-Bold';
+    animation: fadeInAnimation ease 5s;
+    animation-delay: 7s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes floatAnimation {
+0% {
+    transform: translateY(0);
+}
+50% {
+    transform: translateY(-8px);
+}
+100% {
+    transform: translateY(0);
+}
+}
+
+.example-right {
+    position: absolute;
+    height: 20rem;
+    right: 16%;
+    top: 37%;
+    opacity: 0;
+    animation: fadeInAnimation ease 5s;
+    animation-delay: 10s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.example-left {
+    position: absolute;
+    height: 20rem;
+    left: 18%;
+    top: 37%;
+    opacity: 0;
+    animation: fadeInAnimation ease 5s;
+    animation-delay: 10s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+.symptoms {
+    position: absolute;
+    opacity: 0;
+    top: 51.5%;
+    right: 5%;
+    font-size: 2rem;
+    font-family: 'Heebo-Bold';
+    animation: floatAnimation 3s ease-in-out infinite, fadeInAnimation 5s ease 12s 1 forwards;
+}
+
+.phenomenon {
+    position: absolute;
+    opacity: 0;
+    top: 51.5%;
+    left: 10%;
+    font-size: 2rem;
+    font-family: 'Heebo-Bold';
+    animation: floatAnimation 3s ease-in-out infinite, fadeInAnimation 5s ease 12s 1 forwards;
+}
 
 /* ניסוח תופעה */
 

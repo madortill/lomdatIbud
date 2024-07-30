@@ -41,8 +41,15 @@ export default {
             clicked: 0,
             arrayFront: ['pheno.svg', 'amount.svg', 'brain.svg'],
             arrayBack: ['תופעות עיקריות', 'כמות תופעות', 'הכנה עצמית'],
+            onStart: 'start',
 
         };
+    },
+
+    mounted() {
+            setTimeout(() => {
+                this.onStart = 'off';
+            }, 100);
     },
 
     methods: {
