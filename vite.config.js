@@ -14,5 +14,5 @@ export default defineConfig({
   },
 
 
-  base: process.env.NODE_ENV === "production" ? "/doron1/" : "/",
+  base: process.env.NODE_ENV === "production" ? "/lomdatIbud/" : "/",
 })
