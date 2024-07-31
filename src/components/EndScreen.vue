@@ -303,7 +303,6 @@ from {opacity: 0;
   background: var(--main-color);
 }
 
-
 .gear.one {
   height: 32rem;
   bottom: 11rem;
