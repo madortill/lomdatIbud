@@ -2,9 +2,20 @@
     <div id="end-screen">
 
         <div v-if="clicked===0" class="summary">
-אגחיק
 
-            <button v-if="clicked===0" @click = "next" class="next btnNext"> לסיום </button>
+          <p class = "talk-text"> סיכום </p>
+
+          <h1 class="sent1"> {{ summaryArray[0] }} </h1>
+          <h1 class="sent2"> {{ summaryArray[1] }} </h1>
+          <h1 class="sent3"> {{ summaryArray[2] }} </h1>
+          <h1 class="sent4"> {{ summaryArray[3] }} </h1>
+
+
+          <img class="gear one" src="@/assets/media/newGear.png" alt="gear1">
+          <img class="gear two" src="@/assets/media/newGear2.png" alt="gear2">
+          <img class="gear three" src="@/assets/media/newGear3.png" alt="gear3">
+
+            <button @click = "next" class="next btnNext"> לסיום </button>
 
         </div>
 
@@ -18,9 +29,13 @@
 
         <button @click="closeWindow" class="btnNext-end"> סגירה </button>
 
-        <img class="gear one" src="@/assets/media/gear1.png" alt="gear1">
+        <img class="gear one" src="@/assets/media/newGear.png" alt="gear1">
+          <img class="gear two" src="@/assets/media/newGear2.png" alt="gear2">
+          <img class="gear three" src="@/assets/media/newGear3.png" alt="gear3">
+
+        <!-- <img class="gear one" src="@/assets/media/gear1.png" alt="gear1">
         <img class="gear two" src="@/assets/media/gear1.png" alt="gear2">
-        <img class="gear three" src="@/assets/media/gear2.png" alt="gear3">
+        <img class="gear three" src="@/assets/media/gear2.png" alt="gear3"> -->
 
 
         </div>
@@ -40,6 +55,12 @@ export default {
     data() {
         return {
             clicked: 0,
+
+            summaryArray: [' במהלך הלומדה עברנו על השלב הרביעי במעגל החניכה, שלב ה"עיבוד". ',
+              ' למדנו על מטרות ותהליך העיבוד, וכיצד מגדירים ומנסחים תופעה. ',
+              ' הלומדה הבאה היא הלומדה האחרונה- בנושא "משוב". ',
+              ' בהצלחה!!! '
+            ]
 
       
         };
@@ -64,10 +85,104 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 #end-screen {
   text-align: center;
+}
+
+.talk-text {
+    margin: 2%;
+    animation: floatAnimation 3s ease-in-out infinite;
+    color: #ab66e7;
+    font-size: 4rem;
+    border-radius: 10px;
+    text-decoration: none;
+    position: relative;
+    cursor: default;
+    font-family: 'Heebo-Bold';
+}
+
+@keyframes floatAnimation {
+0% {
+    transform: translateY(0);
+}
+50% {
+    transform: translateY(-8px);
+}
+100% {
+    transform: translateY(0);
+}
+}
+
+.talk-text:hover {
+    color: #ab66e7;
+}
+
+.talk-text:before {
+    content: "";
+    position: absolute;
+    width: 40%;
+    height: 2px;
+    bottom: 0;
+    right: 30%;
+    background-color: #ab66e7;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.talk-text:hover:before {
+    visibility: visible;
+    transform: scaleX(1.5);
+}
+
+h1 {
+  animation: fadeInUp;
+  animation-duration: 2s;
+  transform-origin: top center;
+  line-height: 5rem;
+}
+
+.sent2 {
+  opacity: 0;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+.sent3 {
+  opacity: 0;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+}
+.sent4 {
+  opacity: 0;
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
+  font-family: "Heebo-Bold";
+}
+
+@keyframes fadeInUp {
+from {opacity: 0;
+    transform: translateY( 100%)}
+  to {opacity: 1;
+    /* transform: translate3d(0, 0, 0) */
+  }
+}
+
+.end {
+  animation: fadeInLeft;
+  animation-duration: 2s;
+  /* transform-origin: top center; */
+  animation-fill-mode: forwards;
+  
+}
+
+@keyframes fadeInLeft {
+from {opacity: 0;
+  left: -100%;}
+  to {opacity: 1;
+    left: 0;;
+  }
 }
 
 .finale-text {
@@ -195,24 +310,41 @@ export default {
   box-sizing: border-box;
   background: var(--main-color);
 }
-.gear.one {
+/* .gear.one {
   bottom: 17rem;
   right: 2rem;
   animation: clockwise 5s linear infinite;
+} */
+
+.gear.one {
+  height: 32rem;
+  bottom: 13rem;
+  right: 1rem;
+  animation: clockwise 5s linear infinite;
 }
 
-.gear.two {
+/* .gear.two {
   bottom: 4rem;
   left: 76rem;
   animation: anticlockwise 5s linear infinite;
+} */
+.gear.two {
+  bottom: 2.5rem;
+  left: 75rem;
+  animation: anticlockwise 5s linear infinite;
 }
 
+/* .gear.three {
+    height: 30rem;
+    bottom: 25rem;
+    left: -3rem;
+  animation: anticlockwise 5s linear infinite;
+} */
 .gear.three {
     height: 30rem;
     bottom: 25rem;
     left: -3rem;
   animation: anticlockwise 5s linear infinite;
-
 }
 
 .gear .bar {

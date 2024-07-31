@@ -26,7 +26,7 @@
             <h3 class = "list-text-about">גרסה:</h3>
             <p class = "list-text-about">יולי 2024</p>
         </div>
-      </Transition>
+    </Transition>
 
     <openScreen v-if="page === 0"  @next-page="nextPage"></openScreen>
     <navbar v-if="showNav" :titleIndex="titleIndex" @chosen-title="chosenPage" :maxNavPos="maxNavPos"></navbar>

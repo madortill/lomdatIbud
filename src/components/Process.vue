@@ -80,6 +80,18 @@
                         <span></span>
             </div>
             
+            <div v-if="showOpening" class="wording-text-container">
+                <h2 class="opening"> {{ arrayWording[0] }} </h2>
+            <img class="arrow-for-wording" src="@/assets/media/arrowForExample.png" alt="arrow">
+
+                <h2 class="body"> גוף </h2>
+            <img class="arrow-for-wording" src="@/assets/media/arrowForExample.png" alt="arrow">
+
+                <h2 class="sum"> סיכום </h2>
+            </div>
+            
+
+
         </div>
 
         <div v-if="clicked===4" class="wording-steps">
@@ -196,6 +208,8 @@ export default {
             slideAwayAnimation: false,
 
             openDoorAnimation: false,
+            showOpening: false,
+            showSum: false,
             growAnimation: false,
             explainBody: false,
             showButton: true,
@@ -248,12 +262,14 @@ export default {
         openDoor() {
             this.openDoorAnimation = true;
             this.explainBody = true;
+            this.showOpening = true;
         },
 
         moveToSummary() {
             this.arrayWording[2] = this.arrayWording[4];
             this.arrayWording[3] = this.arrayWording[5];
             this.showButton = false;
+            this.showSum = true;
             // setTimeout(() => {
             //         this.growAnimation = true;
             //     }, 2000);
@@ -777,10 +793,24 @@ font-size: 3rem;
     font-size: 2rem;
 }
 
+.wording-text-container {
+    font-size: 1.5rem;
+    display: flex;
+    position: absolute;
+    top: 70%;
+    right: 38%;
+    font-family: "Heebo-Bold";
+    align-items: center;
+    opacity: 0;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
 
+}
+.arrow-for-wording {
+    height: 4rem;
+}
 
-/* .logout:hover */
- /* .door:hover  */
  .open-door{
     transform: perspective(900) rotateY(75deg);
   -webkit-transform: perspective(900) rotateY(75deg);

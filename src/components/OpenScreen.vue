@@ -61,8 +61,6 @@ export default {
   position: absolute;
   z-index: 1;
   bottom: 35%;
-  /* floatAnimation 3s ease-in-out infinite; */
-  /* animation: floatAnimation 3s  ease-in-out infinite; */
 }
 
 
@@ -76,7 +74,6 @@ export default {
     font-size: 2.6rem;
     color: #ffffff;
     border-radius: 100px;
-    /* background-color: rgb(201,165,249); */
     background-color: rgb(148,112,181);
     width: 10vw;
   font-family: 'Heebo-Bold';
@@ -163,12 +160,9 @@ export default {
   background: var(--main-color);
 }
 .gear:after {
-  /* position: absolute; left: 25px; top: 25px; */
   position: absolute; left: 25rem; top: 25rem;
-
   z-index: 3;
   content: "";
-  /* width: 70px; height: 70px; */
   width: 70rem; height: 70rem;
 
   border-radius: 50%;
@@ -177,9 +171,7 @@ export default {
   background: var(--main-color);
 }
 .gear.one {
-  /* bottom: 18vh; */
   bottom: 12rem;
-  /* right: 5vw; */
   right: 8.5rem;
 
 }
