@@ -5,8 +5,8 @@
                 <p class ="explain-text"> 
 
                     שלב בו מתרחש 
-                    <b> ניתוח </b>
-                     נתונים שאספנו במהלך התצפית והפיכתם למידע בעל משמעות.
+                    <b> ניתוח הנתונים </b>
+                      שאספנו במהלך התצפית והפיכתם למידע בעל משמעות.
 
                 </p>
     </div>
@@ -28,14 +28,12 @@
     <div v-if="clicked===2" class="explain-bg">
                 <p class = "talk-text"> מטרת שלב העיבוד </p>
                 <p class = "explain-text"> {{ explainArray[1] }} </p>
-          
-                <!-- <img src="@/assets/media/target.png" class="target-img"> -->
     </div>
 
     <div v-if="clicked===3" class="question">
 
         <div class="question-text">
-            <h3> חשבו וענו : האם המשפט הבא נכון או לא נכון? </h3>
+            <h2> חשבו וענו : האם המשפט הבא נכון או לא נכון? </h2>
             <h1 > בשלב העיבוד אני אוספת נתונים רבים כגון ציטוטים ותיאורים. </h1>
             <button class="correct-btn" :style="wrongAnswer" @click="checkAnswer" :disabled="buttonClicked"> נכון </button>
             <button class="not-correct-btn" :style="rightAnswer" @click="checkAnswer" :disabled="buttonClicked"> לא נכון </button>
@@ -68,9 +66,6 @@ export default {
     data() {
         return {
             clicked: 0,
-            basic1: true,
-            basic2: false,
-            basic3: false,
             explainArray: [ 'שלב בו מתרחש ניתוח נתונים שאספנו במהלך התצפית והפיכתם למידע בעל משמעות.',
                 'מציאת דפוסי התנהגות שכיחים ו/או קריטיים הניתנים לשינוי במשוב.'
             ],
@@ -91,8 +86,6 @@ export default {
     methods: {
         next() {
             this.clicked++;
-
-            // if (this.whereBeen.includes())
             },
         prev() {
             this.clicked--;
@@ -118,12 +111,6 @@ export default {
         this.buttonClicked = true;
         },
 
-        // openCircles() {
-        // this.firstCircleDisplay = 'none';
-        // this.circleDisplay = 'flex';
-        // this.showArrowToClick = false;
-        // this.circle0Animation = 'slideRight 1s ease-in';
-        // },
 
         nextPage() {
             this.$emit('next-page');
@@ -223,9 +210,6 @@ export default {
     border-radius: 100px;
     background-color: #ab66e7;
     z-index: 1;
-
-    /* background-color: rgb(201,165,249); */
-
     width: 7vw;
 }
 .btnNext {

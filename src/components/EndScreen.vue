@@ -25,17 +25,11 @@
             סיימת את לומדת העיבוד!
         </h1>
 
-        <h2> לומדה 4 מתוך 5 במארז הלמידה </h2>
-
         <button @click="closeWindow" class="btnNext-end"> סגירה </button>
 
-        <img class="gear one" src="@/assets/media/newGear.png" alt="gear1">
+          <img class="gear one" src="@/assets/media/newGear.png" alt="gear1">
           <img class="gear two" src="@/assets/media/newGear2.png" alt="gear2">
           <img class="gear three" src="@/assets/media/newGear3.png" alt="gear3">
-
-        <!-- <img class="gear one" src="@/assets/media/gear1.png" alt="gear1">
-        <img class="gear two" src="@/assets/media/gear1.png" alt="gear2">
-        <img class="gear three" src="@/assets/media/gear2.png" alt="gear3"> -->
 
 
         </div>
@@ -58,7 +52,7 @@ export default {
 
             summaryArray: [' במהלך הלומדה עברנו על השלב הרביעי במעגל החניכה, שלב ה"עיבוד". ',
               ' למדנו על מטרות ותהליך העיבוד, וכיצד מגדירים ומנסחים תופעה. ',
-              ' הלומדה הבאה היא הלומדה האחרונה- בנושא "משוב". ',
+              ' הלומדה הבאה היא הלומדה האחרונה: בנושא "משוב". ',
               ' בהצלחה!!! '
             ]
 
@@ -165,31 +159,30 @@ h1 {
 from {opacity: 0;
     transform: translateY( 100%)}
   to {opacity: 1;
-    /* transform: translate3d(0, 0, 0) */
   }
 }
 
 .end {
-  animation: fadeInLeft;
+  animation: fadeIn;
   animation-duration: 2s;
-  /* transform-origin: top center; */
   animation-fill-mode: forwards;
-  
 }
 
-@keyframes fadeInLeft {
+@keyframes fadeIn {
 from {opacity: 0;
-  left: -100%;}
+  }
   to {opacity: 1;
-    left: 0;;
+    
   }
 }
 
 .finale-text {
+  text-align: center;
     color: rgb(148,112,181);
     font-family: "Heebo-Bold";
     font-size: 5rem;
-    margin-top: 7rem;
+    margin-top: 8rem;
+    line-height: 8rem;
     animation: floatAnimation 3s ease-in-out infinite;
 }
 
@@ -210,8 +203,7 @@ from {opacity: 0;
     border: none;
     cursor: pointer;   
     height: 5%;
-    left: 10%;
-    bottom: 10%;
+    bottom: 15%;
     font-size: 2rem;
     color: #ffffff;
     border-radius: 100px;
@@ -226,7 +218,7 @@ from {opacity: 0;
     cursor: pointer;   
     height: 7%;
     left: 45%;
-    bottom: 20%;
+    bottom: 25%;
     font-size: 2.6rem;
     color: #ffffff;
     border-radius: 100px;
@@ -310,40 +302,26 @@ from {opacity: 0;
   box-sizing: border-box;
   background: var(--main-color);
 }
-/* .gear.one {
-  bottom: 17rem;
-  right: 2rem;
-  animation: clockwise 5s linear infinite;
-} */
+
 
 .gear.one {
   height: 32rem;
-  bottom: 13rem;
+  bottom: 11rem;
   right: 1rem;
   animation: clockwise 5s linear infinite;
 }
 
-/* .gear.two {
-  bottom: 4rem;
-  left: 76rem;
-  animation: anticlockwise 5s linear infinite;
-} */
+
 .gear.two {
-  bottom: 2.5rem;
+  bottom: 0.5rem;
   left: 75rem;
   animation: anticlockwise 5s linear infinite;
 }
 
-/* .gear.three {
-    height: 30rem;
-    bottom: 25rem;
-    left: -3rem;
-  animation: anticlockwise 5s linear infinite;
-} */
 .gear.three {
     height: 30rem;
     bottom: 25rem;
-    left: -3rem;
+    left: 1rem;
   animation: anticlockwise 5s linear infinite;
 }
 

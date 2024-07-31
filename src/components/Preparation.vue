@@ -2,7 +2,8 @@
   
   <div id="preparation-page">
 
-<p class = "title"> בעת ההכנה לשיחת המשוב, החונך יתמקד בדברים הבאים: </p>
+    <div v-if="clicked===0">
+        <p class = "title"> בעת ההכנה לשיחת המשוב, החונך יתמקד בדברים הבאים: </p>
 
         <div  class="flip-card-container">
             <div v-for="( item, index) in arrayFront" :key="index" :class="['flip-card', this.onStart]">
@@ -16,17 +17,22 @@
                 </div>
             </div>
         </div>
+    </div>
 
 
 
+        <div v-if="clicked===1" >
+            <p class = "title-for-1"> מוכנים לתרגל?? </p>
+        </div>
 
-        <!-- <div class="prev-next-btns">
-            <button v-if="clicked>=1 && clicked<=2" @click = "prev" class="prev btnNext"> חזור </button>
-            <button v-if="clicked<2" @click = "next" class="next btnNext"> הבא </button>
-        </div> -->
+
+        <div class="prev-next-btns">
+            <button v-if="clicked===1" @click = "prev" class="prev btnNext"> חזור </button>
+            <button v-if="clicked===0" @click = "next" class="next btnNext"> הבא </button>
+        </div>
 
         
-        <button class="btnNext" @click = "nextPage"> לתרגול </button>
+        <button v-if="clicked===1" class="btnNext" @click = "nextPage"> לתרגול </button>
 
   </div>
 
@@ -165,6 +171,13 @@ export default {
 
 /* כותרת */
 
+.title-for-1 {
+    text-align: center;
+    font-size: 4rem;
+    font-family: 'Heebo-Bold';
+    margin-top: 15rem;
+    animation: floatAnimation 3s ease-in-out infinite;
+}
 
 .title {
     text-align: center;
@@ -188,51 +201,6 @@ export default {
 }
 }
 
-/* .talk-text {
-    margin: 2%;
-    animation: floatAnimation 3s ease-in-out infinite;
-    color: #ab66e7;
-    font-size: 4rem;
-    border-radius: 10px;
-    text-decoration: none;
-    position: relative;
-    cursor: default;
-    font-family: 'Heebo-Bold';
-}
-
-@keyframes floatAnimation {
-0% {
-    transform: translateY(0);
-}
-50% {
-    transform: translateY(-8px);
-}
-100% {
-    transform: translateY(0);
-}
-}
-
-.talk-text:hover {
-    color: #ab66e7;
-}
-
-.talk-text:before {
-    content: "";
-    position: absolute;
-    width: 40%;
-    height: 2px;
-    bottom: 0;
-    right: 30%;
-    background-color: #ab66e7;
-    visibility: hidden;
-    transform: scaleX(0);
-    transition: all 0.3s ease-in-out 0s;
-}
-
-.talk-text:hover:before {
-    visibility: visible;
-    transform: scaleX(1.5);
-} */
 
 /* כפתורים */
 

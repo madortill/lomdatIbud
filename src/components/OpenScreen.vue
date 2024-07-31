@@ -70,15 +70,13 @@ export default {
     cursor: pointer;   
     height: 7%;
     left: 45%;
-    bottom: 10%;
+    bottom: 8%;
     font-size: 2.6rem;
     color: #ffffff;
     border-radius: 100px;
     background-color: rgb(148,112,181);
     width: 10vw;
-  font-family: 'Heebo-Bold';
-
-
+    font-family: 'Heebo-Bold';
 }
 
 
@@ -212,27 +210,6 @@ export default {
   0% { -webkit-transform: rotate(360deg);}
   100% { -webkit-transform: rotate(0deg);}
 }
-/* @keyframes clockwiseError {
-  0% { -webkit-transform: rotate(0deg);}
-  20% { -webkit-transform: rotate(30deg);}
-  40% { -webkit-transform: rotate(25deg);}
-  60% { -webkit-transform: rotate(30deg);}
-  100% { -webkit-transform: rotate(0deg);}
-}
-@keyframes anticlockwiseErrorStop {
-  0% { -webkit-transform: rotate(0deg);}
-  20% { -webkit-transform: rotate(-30deg);}
-  60% { -webkit-transform: rotate(-30deg);}
-  100% { -webkit-transform: rotate(0deg);}
-}
-@keyframes anticlockwiseError {
-  0% { -webkit-transform: rotate(0deg);}
-  20% { -webkit-transform: rotate(-30deg);}
-  40% { -webkit-transform: rotate(-25deg);}
-  60% { -webkit-transform: rotate(-30deg);}
-  100% { -webkit-transform: rotate(0deg);}
-} */
-
 
 
 @-webkit-keyframes clockwise {
@@ -243,32 +220,7 @@ export default {
   0% { -webkit-transform: rotate(360deg);}
   100% { -webkit-transform: rotate(0deg);}
 }
-/* @-webkit-keyframes clockwiseError {
-  0% { -webkit-transform: rotate(0deg);}
-  20% { -webkit-transform: rotate(30deg);}
-  40% { -webkit-transform: rotate(25deg);}
-  60% { -webkit-transform: rotate(30deg);}
-  100% { -webkit-transform: rotate(0deg);}
-}
-@-webkit-keyframes anticlockwiseErrorStop {
-  0% { -webkit-transform: rotate(0deg);}
-  20% { -webkit-transform: rotate(-30deg);}
-  60% { -webkit-transform: rotate(-30deg);}
-  100% { -webkit-transform: rotate(0deg);}
-}
-@-webkit-keyframes anticlockwiseError {
-  0% { -webkit-transform: rotate(0deg);}
-  20% { -webkit-transform: rotate(-30deg);}
-  40% { -webkit-transform: rotate(-25deg);}
-  60% { -webkit-transform: rotate(-30deg);}
-  100% { -webkit-transform: rotate(0deg);}
-} */
-/* .gear.one {
-    animation: clockwiseError 5s linear infinite;
-}
-.gear.two {
-    animation: anticlockwiseError 5s linear infinite;
-} */
+
 .loading .gear.one, .loading .gear.three {
     animation: clockwise 5s linear infinite;
 }

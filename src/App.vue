@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <img v-show ="showAbout"
+    <img 
       src="@/assets/media/mifkada-logo.png"
       class="logo"
       alt="Logo"
-      @click="homePage"
     />
+  
     <img
       src="@/assets/media/madortill.png"
       alt="mador-till"
-      class="mador-till   "
+      class="mador-till"
     />
 
     <button v-show ="page === 0" class = "aboutBtn" @click = "openAbout">i</button>
@@ -19,6 +19,8 @@
             <p class = "list-text-about">רב"ט דורון הרפז</p>
             <h3 class = "list-text-about">גרפיקה:</h3>
             <p class = "list-text-about">רב"ט דורון הרפז</p>
+            <h3 class = "list-text-about">מומחית תוכן:</h3>
+            <p class = "list-text-about">רב"ט אלה טייטלר</p>
             <h3 class = "list-text-about">רת"ח מו"פ:</h3>
             <p class = "list-text-about">רס"ל אביב אואנונו</p>
             <h3 class = "list-text-about">רמ"ד טי"ל:</h3>
@@ -97,11 +99,6 @@ export default {
             }
             this.clickBtn++;
         },
-
-    homePage() {
-        this.page = 0;
-        this.showAbout = false
-    },
   },
 };
 </script>
@@ -139,10 +136,9 @@ body {
 .logo {
   max-width: 100px;
   position: absolute;
-  top: 1%;
+  top: 2%;
   left: 1%;
   z-index: 3;
-  cursor: pointer;
 }
 
 .mador-till {
@@ -166,7 +162,7 @@ body {
   height: 4%;
   cursor: pointer;
   left: 2.5%;
-  top: 5%;
+  top: 15%;
 
 }
 
@@ -177,7 +173,7 @@ body {
 .div-about {
   position: absolute;
   width: 12%;
-  height: 45%;
+  height: 50%;
   left: 8%;
   top: 10%;
   background: #fff;

@@ -145,7 +145,7 @@
 
         <div class="prev-next-btns">
             <button v-if="clicked>=1 && clicked<=6" @click = "prev" class="prev btnNext"> חזור </button>
-            <button v-if="clicked<6" @click = "next" class="next btnNext"> הבא </button>
+            <button v-if="clicked<6 && showNextBtn" @click = "next" class="next btnNext"> הבא </button>
         </div>
 
         
@@ -214,6 +214,8 @@ export default {
             explainBody: false,
             showButton: true,
 
+            showNextBtn:true,
+
         };
     },
 
@@ -221,6 +223,8 @@ export default {
         setTimeout( () => {
             this.showArrow1 = true;
         }, 1500);
+            this.showNextBtn = false;
+
     },
 
     methods: {
@@ -232,6 +236,12 @@ export default {
                 }, 100);
             };
             this.onStart = 'start';
+            if(this.clicked===2) {
+                this.showNextBtn = false;
+                setTimeout(() => {
+                    this.showNextBtn = true;
+                }, 10000);
+            }
             },
         prev() {
             this.clicked--;
@@ -241,6 +251,12 @@ export default {
                 }, 100);
             };
             this.onStart = 'start';
+            if(this.clicked===2) {
+                this.showNextBtn = false;
+                setTimeout(() => {
+                    this.showNextBtn = true;
+                }, 10000);
+            }
         },
 
         showIbud() {
@@ -251,6 +267,9 @@ export default {
         },
         showMashov() {
             this.showMashovDiv = true;
+                setTimeout(() => {
+                    this.showNextBtn = true;
+                }, 800);
         },
         clickedCalculator() {
             this.slideAwayAnimation = true;
@@ -735,7 +754,6 @@ from {opacity: 0;
   text-align: center;
   font-family: "Heebo-Bold";
 font-size: 2rem;
- /* line-height: 4rem; */
  vertical-align: middle;
  top: 20rem;
  right: 51.3rem;
@@ -744,6 +762,7 @@ font-size: 2rem;
 
 .doorway p {
   width: 14rem;
+  margin-top: 3rem;
 }
 
 
@@ -829,7 +848,7 @@ font-size: 3rem;
 
 .body-explanation {
     text-align: center;
-    line-height: 5rem;
+    line-height: 3rem;
     font-family: "Heebo";
     font-size: 2rem;
 }

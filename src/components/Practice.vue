@@ -164,7 +164,9 @@ export default {
 
             }
         }
-        this.buttonClicked = true;
+        setTimeout(() => {
+                    this.buttonClicked = true;
+                }, 800);
         },
     },
 }
