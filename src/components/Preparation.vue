@@ -194,7 +194,7 @@ export default {
     transform: translateY(0);
 }
 50% {
-    transform: translateY(-8px);
+    transform: translateY(-1rem);
 }
 100% {
     transform: translateY(0);
@@ -208,14 +208,14 @@ export default {
     position: absolute;
     border: none;
     cursor: pointer;   
-    height: 5%;
-    left: 10%;
-    bottom: 10%;
+    height: 4rem;
+    left: 10rem;
+    bottom: 6rem;
     font-size: 2rem;
     color: #ffffff;
     border-radius: 100px;
     background-color: #ab66e7;
-    width: 7vw;
+    width: 8rem;
 }
 .btnNext {
   animation: borderPulse 4000ms infinite ease-out;
@@ -259,12 +259,12 @@ export default {
 }
 
 .prev {
-  left: 84%;
+    left: 100rem;
   text-align: center;
 }
 
 .next {
-  left: 10%;
+  left: 10rem;
   text-align: center;
 
 } 

@@ -47,20 +47,13 @@ export default {
 }
 
 
-.logo-white {
-    width: 10%;
-    position: absolute;
-    left: 20%;
-}
-
-
 .text-title {
   color:rgb(83, 82, 82);
   font-family: 'Heebo-Bold';
   font-size: 7.5rem;
   position: absolute;
   z-index: 1;
-  bottom: 35%;
+  /* bottom: 35%; */
 }
 
 
@@ -68,14 +61,14 @@ export default {
     position: absolute;
     border: none;
     cursor: pointer;   
-    height: 7%;
-    left: 45%;
-    bottom: 8%;
+    height: 5rem;
+    left: 55rem;
+    bottom: 5rem;
     font-size: 2.6rem;
     color: #ffffff;
     border-radius: 100px;
     background-color: rgb(148,112,181);
-    width: 10vw;
+    width: 12rem;
     font-family: 'Heebo-Bold';
 }
 
@@ -97,14 +90,14 @@ export default {
 
 
 .lomdat {
-  bottom: 58vh;
-  right: 33vw;
+  bottom: 34rem;
+  right: 39.5rem;
 }
 
 
 .aibud {
-  bottom: 29vh;
-  right: 56vw;
+  bottom: 17rem;
+  right: 67rem;
 }
 
 
@@ -177,7 +170,7 @@ export default {
   top: 5rem;
   left: 7rem;
 }
-.gear .bar {
+/* .gear .bar {
   position: absolute; left: -15px; top: 50%;
   z-index: 0;
   width: 150px; height: 30px;
@@ -199,7 +192,7 @@ export default {
 .gear .bar:nth-child(3) {
   transform: rotate(120deg);
   -webkit-transform: rotate(120deg);
-}
+} */
 
 
 @keyframes clockwise {

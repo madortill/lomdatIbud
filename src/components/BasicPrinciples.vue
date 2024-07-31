@@ -125,10 +125,10 @@ export default {
 
 .explain-bg {
     position: absolute;
-    width: 40%;
-    height: 60%;
-    left: 30%;
-    bottom: 20%;
+    width: 50rem;
+    height: 35rem;
+    left: 35rem;
+    bottom: 12rem;
     background: #fff;
     border-radius: 3rem;
     box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
@@ -138,24 +138,24 @@ export default {
 
 .explain-text {
     font-size: 2.1rem;
-    padding: 10% 7% 2%;
+    padding: 6rem 5rem 2rem;
     color: rgb(79, 77, 77);
-    margin: 0%;
+    margin: 0rem;
 }
 
 
-
  .talk-text {
-    margin: 3%;
+    margin: 2rem;
     animation: floatAnimation 3s ease-in-out infinite;
     color: #ab66e7;
     font-size: 3rem;
     border-radius: 10px;
-    top: 10%;
+    /* top: 4rem; */
     text-decoration: none;
-    position: relative;
+    /* position: relative; */
     cursor: default;
     font-family: 'Heebo-Bold';
+    z-index: 2;
 
 }
 .why-title {
@@ -190,7 +190,7 @@ export default {
     transform: translateY(0);
 }
 50% {
-    transform: translateY(-8px);
+    transform: translateY(-1rem);
 }
 100% {
     transform: translateY(0);
@@ -202,15 +202,15 @@ export default {
     position: absolute;
     border: none;
     cursor: pointer;   
-    height: 5%;
-    left: 10%;
-    bottom: 10%;
+    height: 4rem;
+    left: 10rem;
+    bottom: 6rem;
     font-size: 2rem;
     color: #ffffff;
     border-radius: 100px;
     background-color: #ab66e7;
     z-index: 1;
-    width: 7vw;
+    width: 8rem;
 }
 .btnNext {
   animation: borderPulse 4000ms infinite ease-out;
@@ -254,14 +254,13 @@ export default {
 }
 
 .prev {
-  left: 84%;
+  left: 100rem;
   text-align: center;
 }
 
 .next {
-  left: 10%;
+  left: 10rem;
   text-align: center;
-
 } 
 
 .circles-container {
@@ -275,7 +274,7 @@ export default {
     border-radius: 100%;
     height: 20rem;
     width: 20rem;
-    bottom: 30%;
+    bottom: 17rem;
     text-align: center;
     font-weight: 600;
     font-size: 2rem;
@@ -294,19 +293,19 @@ export default {
 
 
 .circle p {
-    padding: 5%;
+    padding: 2rem;
 }
 
 
 .circle0 {
     background-color: #b97edb;
     position: absolute;
-    right: 20%;
+    right: 22rem;
     animation: slideRight 1s ease-in;
 }
 @keyframes slideRight {
     0% {
-        transform: translateX(-400px);
+        transform: translateX(-20rem);
     }
     100% {
         transform: translateX(0);
@@ -316,18 +315,18 @@ export default {
     background-color: #c998e6;
     position: absolute;
     align-self: center;
-    left: 41.5%;
+    left: 50rem;
 }
 
 .circle2 {
     background-color: #d7b9e9;
     position: absolute;
-    left: 20%;
+    left: 22rem;
     animation: slideLeft 1s ease-in;
 }
 @keyframes slideLeft {
     0% {
-        transform: translateX(400px);
+        transform: translateX(20rem);
     }
     100% {
         transform: translateX(0);
@@ -337,23 +336,26 @@ export default {
 
 .question {
     text-align: center;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
 }
 
 .question-text {
-    position: absolute;
-    width: 40%;
-    height: 40%;
-    left: 30%;
-    bottom: 35%;
+    width: 50rem;
+    height: 20rem;
+    left: 35rem;
+    bottom: 22rem;
     text-align: center;
     
 }
 
 .correct-btn {
     border-radius: 5rem;
-    position: absolute;
-    top: 15rem;
-    right: 10rem;
     height: 5rem;
     width: 10rem;
     font-family: "Heebo";
@@ -365,9 +367,8 @@ export default {
 
 .not-correct-btn {
     border-radius: 5rem;
-    position: absolute;
-    top: 15rem;
-    left: 10rem;
+    margin-top: 3rem;
+    margin-right: 5rem;
     height: 5rem;
     width: 10rem;
     font-family: "Heebo";
@@ -398,14 +399,14 @@ export default {
     position: absolute;
     background-color: #fff;
     width: 100vw;
-    top: 22rem;
-    left: -36rem;
+    top: 38rem;
+    left: 0rem;
     text-align: center;
-  box-shadow: 0px 5px 5px 0px;
-  animation: fadeInUp;
-  animation-duration: 2s;
-  transform-origin: top center;
-  z-index: 3;
+    box-shadow: 0px 5px 5px 0px;
+    animation: fadeInUp-98a5a279;
+    animation-duration: 2s;
+    transform-origin: top center;
+    z-index: 3;
 }
 
 @keyframes fadeInUp {
@@ -416,12 +417,12 @@ from {opacity: 0;
 }
 
 .answer-bg {
-    width: 150vw;
-    height: 150vh;
+    width: 100vw;
+    height: 100vh;
     position: absolute;
     z-index: 1;
-    top: -70%;
-    right: -80%;
+    top: 0rem;
+    right: 0rem;
     background-color: #03030369;
 }
 

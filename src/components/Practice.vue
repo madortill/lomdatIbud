@@ -188,7 +188,7 @@ export default {
     border-radius: 100%;
     height: 15rem;
     width: 15rem;
-    bottom: 30%;
+    bottom: 18rem;
     text-align: center;
     font-weight: 600;
     font-size: 2rem;
@@ -211,14 +211,14 @@ export default {
     }
 }
 .circle p {
-    padding: 5%;
+    padding: 2rem;
 }
 
 .circle0 {
     background-color: #b97edb;
     position: absolute;
-    top: 32%;
-    right: 22%;
+    top: 18rem;
+    right: 27rem;
     
 }
 
@@ -226,21 +226,21 @@ export default {
     background-color: #c998e6;
     position: absolute;
     align-self: center;
-    top: 37%;
-    right: 32%;
+    top: 23rem;
+    right: 38rem;
 }
 
 .circle2 {
     background-color: #d7b9e9;
     position: absolute;
-    top: 49%;
-    right: 21%;
+    top: 28rem;
+    right: 25rem;
 }
 
 .arrow-for-example {
     position: absolute;
-    top: 45%;
-    right: 45%;
+    top: 27rem;
+    right: 53.5rem;
     width: 15rem;
     opacity: 0;
     animation: fadeInAnimation ease 5s;
@@ -290,28 +290,10 @@ export default {
   box-shadow: 0px 1px 0px 0px;
 }
 
-.symptoms {
-    position: absolute;
-    opacity: 0;
-    top: 51.5%;
-    right: 5%;
-    font-size: 2rem;
-    font-family: 'Heebo-Bold';
-    animation: floatAnimation 3s ease-in-out infinite, fadeInAnimation 5s ease 8s 1 forwards;
-}
-
-.phenomenon {
-    position: absolute;
-    opacity: 0;
-    top: 51.5%;
-    left: 10%;
-    font-size: 2rem;
-    font-family: 'Heebo-Bold';
-    animation: floatAnimation 3s ease-in-out infinite, fadeInAnimation 5s ease 8s 1 forwards;
-}
 
 .question {
     text-align: center;
+    
 }
 
 .question-text {
@@ -320,8 +302,6 @@ export default {
     width: 55rem;
     margin-right: auto;
     margin-left: auto;
-
-
 }
 
 .que-text {
@@ -376,17 +356,17 @@ export default {
 }
 
 .que-explanation {
-    position: absolute;
+  position: absolute;
     background-color: #fff;
-    width: 100%;
-    height: 15%;
+    width: 100vw;
     top: 38rem;
+    left: 0rem;
     text-align: center;
-  box-shadow: 0px 5px 5px 0px;
-  animation: fadeInUp;
-  animation-duration: 2s;
-  transform-origin: top center;
-  z-index: 3;
+    box-shadow: 0px 5px 5px 0px;
+    animation: fadeInUp-98a5a279;
+    animation-duration: 2s;
+    transform-origin: top center;
+    z-index: 3;
 }
 
 @keyframes fadeInUp {
@@ -397,12 +377,12 @@ from {opacity: 0;
 }
 
 .answer-bg {
-    width: 150%;
-    height: 150%;
+    width: 100vw;
+    height: 100vh;
     position: absolute;
     z-index: 1;
-    top: -40%;
-    /* right: -80%; */
+    top: 0rem;
+    right: 0rem;
     background-color: #03030369;
 }
 
@@ -413,15 +393,15 @@ from {opacity: 0;
     position: absolute;
     border: none;
     cursor: pointer;   
-    height: 5%;
-    left: 10%;
-    bottom: 10%;
+    height: 4rem;
+    left: 10rem;
+    bottom: 6rem;
     font-size: 2rem;
     color: #ffffff;
     border-radius: 100px;
     background-color: #ab66e7;
-    width: 7vw;
-    z-index: 5;
+    z-index: 1;
+    width: 8rem;
 }
 .btnNext {
   animation: borderPulse 4000ms infinite ease-out;
@@ -465,12 +445,12 @@ from {opacity: 0;
 }
 
 .prev {
-  left: 84%;
+  left: 100rem;
   text-align: center;
 }
 
 .next {
-  left: 10%;
+    left: 10rem;
   text-align: center;
 
 } 

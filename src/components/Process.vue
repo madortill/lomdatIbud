@@ -289,9 +289,6 @@ export default {
             this.arrayWording[3] = this.arrayWording[5];
             this.showButton = false;
             this.showSum = true;
-            // setTimeout(() => {
-            //         this.growAnimation = true;
-            //     }, 2000);
         },
      
 
@@ -554,7 +551,7 @@ p {
         transform: none;
     }
     100% {
-        transform: translateX(-42%);
+        transform: translateX(-18rem);
     }
     
 }
@@ -597,7 +594,7 @@ from {opacity: 0;
     border-radius: 100%;
     height: 15rem;
     width: 15rem;
-    bottom: 30%;
+    bottom: 18rem;
     text-align: center;
     font-weight: 600;
     font-size: 2rem;
@@ -620,14 +617,14 @@ from {opacity: 0;
     }
 }
 .circle p {
-    padding: 5%;
+    padding: 2rem;
 }
 
 .circle0 {
     background-color: #b97edb;
     position: absolute;
-    top: 32%;
-    right: 22%;
+    top: 18rem;
+    right: 27rem;
     
 }
 
@@ -635,21 +632,21 @@ from {opacity: 0;
     background-color: #c998e6;
     position: absolute;
     align-self: center;
-    top: 37%;
-    right: 32%;
+    top: 23rem;
+    right: 38rem;
 }
 
 .circle2 {
     background-color: #d7b9e9;
     position: absolute;
-    top: 49%;
-    right: 21%;
+    top: 28rem;
+    right: 25rem;
 }
 
 .arrow-for-example {
     position: absolute;
-    top: 45%;
-    right: 45%;
+    top: 27rem;
+    right: 53.5rem;
     width: 15rem;
     opacity: 0;
     animation: fadeInAnimation ease 5s;
@@ -660,12 +657,11 @@ from {opacity: 0;
 
 .example-text {
     position: absolute;
-    margin: 2%;
-    top: 40%;
-    width: 20%;
-    left: 20%;
+    margin: 3rem;
+    top: 23rem;
+    width: 25rem;
+    left: 23rem;
     opacity: 0;
-    /* animation: floatAnimation 3s ease-in-out infinite; */
     color: #ab66e7;
     font-size: 4rem;
     border-radius: 10px;
@@ -683,7 +679,7 @@ from {opacity: 0;
     transform: translateY(0);
 }
 50% {
-    transform: translateY(-8px);
+    transform: translateY(-1rem);
 }
 100% {
     transform: translateY(0);
@@ -693,8 +689,8 @@ from {opacity: 0;
 .example-right {
     position: absolute;
     height: 20rem;
-    right: 16%;
-    top: 37%;
+    right: 20rem;
+    top: 22rem;
     opacity: 0;
     animation: fadeInAnimation ease 5s;
     animation-delay: 6s;
@@ -705,8 +701,8 @@ from {opacity: 0;
 .example-left {
     position: absolute;
     height: 20rem;
-    left: 18%;
-    top: 37%;
+    left: 22rem;
+    top: 22rem;
     opacity: 0;
     animation: fadeInAnimation ease 5s;
     animation-delay: 6s;
@@ -717,8 +713,8 @@ from {opacity: 0;
 .symptoms {
     position: absolute;
     opacity: 0;
-    top: 51.5%;
-    right: 5%;
+    top: 31rem;
+    right: 8rem;
     font-size: 2rem;
     font-family: 'Heebo-Bold';
     animation: floatAnimation 3s ease-in-out infinite, fadeInAnimation 5s ease 8s 1 forwards;
@@ -727,8 +723,8 @@ from {opacity: 0;
 .phenomenon {
     position: absolute;
     opacity: 0;
-    top: 51.5%;
-    left: 10%;
+    top: 31rem;
+    left: 14rem;
     font-size: 2rem;
     font-family: 'Heebo-Bold';
     animation: floatAnimation 3s ease-in-out infinite, fadeInAnimation 5s ease 8s 1 forwards;
@@ -796,7 +792,6 @@ font-size: 2rem;
  text-align: center;
  font-family: "Heebo-Bold";
 font-size: 3rem;
- /* line-height: 10rem; */
  width: 17.5rem;
   height: 19.5rem;
   cursor: pointer;
@@ -816,8 +811,8 @@ font-size: 3rem;
     font-size: 1.5rem;
     display: flex;
     position: absolute;
-    top: 70%;
-    right: 38%;
+    top: 40rem;
+    right: 46rem;
     font-family: "Heebo-Bold";
     align-items: center;
     opacity: 0;
@@ -853,29 +848,6 @@ font-size: 3rem;
     font-size: 2rem;
 }
 
-.grow {
-    animation: growAnimation 2.5s ease forwards;
-    z-index: 1;
-font-size: 3rem;
-
-}
-
-@keyframes growAnimation {
-    from {
-        /* width: 10rem;
-        height: 10rem; */
-    }
-    to {
-    box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
-    border-radius: 3rem;
-
-        transform: scaleY(1.1);
-        width: 100rem;
-
-        right: 10rem;
-
-    }
-}
 
 
 /* שלבים */
@@ -915,8 +887,8 @@ font-size: 3rem;
 
 .steps-title {
     position: absolute;
-    right: 7%;
-    top: 20%;
+    right: 7rem;
+    top: 15rem;
     width: 25rem;
     font-family: "Heebo-Bold";
     font-size: 3rem;
@@ -929,8 +901,8 @@ font-size: 3rem;
     justify-content: space-evenly;
     align-items: center;
     position: absolute;
-    height: 85vh;
-    right: 32vw;
+    height: 50rem;
+    right: 39rem;
     bottom: 2rem;
     animation: fadeInAnimation ease 5s;
     animation-iteration-count: 1;
@@ -961,9 +933,9 @@ font-size: 3rem;
     align-items: center;
     flex-wrap: wrap;
     position: absolute;
-    left: 16%;
-    height: 50%;
-    bottom: 24%;
+    left: 20rem;
+    height: 30rem;
+    bottom: 12rem;
 }
 
 .flip-card {
@@ -1007,7 +979,6 @@ font-size: 3rem;
 }
 
 .flip-card-back {
-    /* background-color: #ab66e7; */
     background-color: hsl(var(--hue), 75%, 60%);
     border-radius: 30px;
     font-size: 1.5rem;
@@ -1047,14 +1018,14 @@ font-size: 3rem;
     position: absolute;
     border: none;
     cursor: pointer;   
-    height: 5%;
-    left: 10%;
-    bottom: 10%;
+    height: 4rem;
+    left: 10rem;
+    bottom: 6rem;
     font-size: 2rem;
     color: #ffffff;
     border-radius: 100px;
     background-color: #ab66e7;
-    width: 7vw;
+    width: 8rem;
 }
 .btnNext {
   animation: borderPulse 4000ms infinite ease-out;
@@ -1098,13 +1069,12 @@ font-size: 3rem;
 }
 
 .prev {
-  left: 84%;
+  left: 100rem;
   text-align: center;
 }
 
 .next {
-  left: 10%;
+  left: 10rem;
   text-align: center;
-
 } 
 </style>

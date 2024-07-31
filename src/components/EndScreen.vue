@@ -86,7 +86,7 @@ export default {
 }
 
 .talk-text {
-    margin: 2%;
+    margin: 2rem;
     animation: floatAnimation 3s ease-in-out infinite;
     color: #ab66e7;
     font-size: 4rem;
@@ -102,7 +102,7 @@ export default {
     transform: translateY(0);
 }
 50% {
-    transform: translateY(-8px);
+    transform: translateY(-1rem);
 }
 100% {
     transform: translateY(0);
@@ -157,7 +157,7 @@ h1 {
 
 @keyframes fadeInUp {
 from {opacity: 0;
-    transform: translateY( 100%)}
+    transform: translateY( 100rem)}
   to {opacity: 1;
   }
 }
@@ -172,7 +172,6 @@ from {opacity: 0;
 from {opacity: 0;
   }
   to {opacity: 1;
-    
   }
 }
 
@@ -191,7 +190,7 @@ from {opacity: 0;
     transform: translateY(0);
 }
 50% {
-    transform: translateY(-8px);
+    transform: translateY(-1rem);
 }
 100% {
     transform: translateY(0);
@@ -199,31 +198,32 @@ from {opacity: 0;
 }
 
 .btnNext {
-    position: absolute;
+  position: absolute;
     border: none;
     cursor: pointer;   
-    height: 5%;
-    bottom: 15%;
+    height: 4rem;
+    left: 10rem;
+    bottom: 6rem;
     font-size: 2rem;
     color: #ffffff;
     border-radius: 100px;
     background-color: #ab66e7;
     z-index: 1;
-    width: 7vw;
+    width: 8rem;
 }
 
 .btnNext-end {
     position: absolute;
     border: none;
     cursor: pointer;   
-    height: 7%;
-    left: 45%;
-    bottom: 25%;
+    height: 5rem;
+    left: 52rem;
+    bottom: 15rem;
     font-size: 2.6rem;
     color: #ffffff;
     border-radius: 100px;
     background-color: rgb(148,112,181);
-    width: 10vw;
+    width: 12rem;
   font-family: 'Heebo-Bold';
 }
 
@@ -271,7 +271,7 @@ from {opacity: 0;
 }
 
 .next {
-  left: 10%;
+  left: 10rem;
   text-align: center;
 
 } 
@@ -311,7 +311,6 @@ from {opacity: 0;
   animation: clockwise 5s linear infinite;
 }
 
-
 .gear.two {
   bottom: 0.5rem;
   left: 75rem;
@@ -323,30 +322,6 @@ from {opacity: 0;
     bottom: 25rem;
     left: 1rem;
   animation: anticlockwise 5s linear infinite;
-}
-
-.gear .bar {
-  position: absolute; left: -15px; top: 50%;
-  z-index: 0;
-  width: 150px; height: 30px;
-  margin-top: -15px;
-  border-radius: 5px;
-  background: var(--stroke-color);
-}
-.gear .bar:before {
-  position: absolute; left: 5px; top: 5px; right: 5px; bottom: 5px;
-  z-index: 1;
-  content: "";
-  border-radius: 2px;
-  background: var(--main-color);
-}
-.gear .bar:nth-child(2) {
-  transform: rotate(60deg);
-  -webkit-transform: rotate(60deg);
-}
-.gear .bar:nth-child(3) {
-  transform: rotate(120deg);
-  -webkit-transform: rotate(120deg);
 }
 
 @keyframes clockwise {
@@ -365,9 +340,6 @@ from {opacity: 0;
   0% { -webkit-transform: rotate(360deg);}
   100% { -webkit-transform: rotate(0deg);}
 }
-
-
-
 
 
 </style>
