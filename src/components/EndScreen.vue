@@ -1,134 +1,122 @@
 <template>
-    <div id="end-screen">
+  <div id="end-screen">
+    <div v-if="clicked === 0" class="summary">
+      <p class="talk-text">סיכום</p>
 
-        <div v-if="clicked===0" class="summary">
+      <h1 class="sent1">{{ summaryArray[0] }}</h1>
+      <h1 class="sent2">{{ summaryArray[1] }}</h1>
+      <h1 class="sent3">{{ summaryArray[2] }}</h1>
+      <h1 class="sent4">{{ summaryArray[3] }}</h1>
 
-          <p class = "talk-text"> סיכום </p>
+      <img class="gear one" src="@/assets/media/newGear.png" alt="gear1" />
+      <img class="gear two" src="@/assets/media/newGear2.png" alt="gear2" />
+      <img class="gear three" src="@/assets/media/newGear3.png" alt="gear3" />
 
-          <h1 class="sent1"> {{ summaryArray[0] }} </h1>
-          <h1 class="sent2"> {{ summaryArray[1] }} </h1>
-          <h1 class="sent3"> {{ summaryArray[2] }} </h1>
-          <h1 class="sent4"> {{ summaryArray[3] }} </h1>
-
-
-          <img class="gear one" src="@/assets/media/newGear.png" alt="gear1">
-          <img class="gear two" src="@/assets/media/newGear2.png" alt="gear2">
-          <img class="gear three" src="@/assets/media/newGear3.png" alt="gear3">
-
-            <button @click = "next" class="next btnNext"> לסיום </button>
-
-        </div>
-
-        <div v-if="clicked===1" class="end">
-        <h1 class="finale-text"> כל הכבוד! 
-            <br>
-            סיימת את לומדת העיבוד!
-        </h1>
-
-        <button @click="closeWindow" class="btnNext-end"> סגירה </button>
-
-          <img class="gear one" src="@/assets/media/newGear.png" alt="gear1">
-          <img class="gear two" src="@/assets/media/newGear2.png" alt="gear2">
-          <img class="gear three" src="@/assets/media/newGear3.png" alt="gear3">
-
-
-        </div>
-        
-
-     
+      <button @click="next" class="next btnNext">לסיום</button>
     </div>
+
+    <div v-if="clicked === 1" class="end">
+      <h1 class="finale-text">
+        כל הכבוד!
+        <br />
+        סיימת את לומדת העיבוד!
+      </h1>
+
+      <button @click="closeWindow" class="btnNext-end">סגירה</button>
+      <div class="toPackageBtn" @click="toPackage">חזרה למארז</div>
+
+      <img class="gear one" src="@/assets/media/newGear.png" alt="gear1" />
+      <img class="gear two" src="@/assets/media/newGear2.png" alt="gear2" />
+      <img class="gear three" src="@/assets/media/newGear3.png" alt="gear3" />
+    </div>
+  </div>
 </template>
 
 <script>
-
 export default {
-    name: 'end-screen',
-    components: {
+  name: "end-screen",
+  components: {},
+  data() {
+    return {
+      clicked: 0,
 
+      summaryArray: [
+        ' במהלך הלומדה עברנו על השלב הרביעי במעגל החניכה, שלב ה"עיבוד". ',
+        " למדנו על מטרות ותהליך העיבוד, וכיצד מגדירים ומנסחים תופעה. ",
+        ' הלומדה הבאה היא הלומדה האחרונה: בנושא "משוב". ',
+        " בהצלחה!!! ",
+      ],
+    };
+  },
+  mounted() {},
+  methods: {
+    next() {
+      this.clicked++;
     },
-    data() {
-        return {
-            clicked: 0,
 
-            summaryArray: [' במהלך הלומדה עברנו על השלב הרביעי במעגל החניכה, שלב ה"עיבוד". ',
-              ' למדנו על מטרות ותהליך העיבוד, וכיצד מגדירים ומנסחים תופעה. ',
-              ' הלומדה הבאה היא הלומדה האחרונה: בנושא "משוב". ',
-              ' בהצלחה!!! '
-            ]
-
-      
-        };
+    prev() {
+      this.clicked--;
     },
-    mounted() {
-      
+
+    closeWindow() {
+      window.close(); // סוגר את חלון האתר.
     },
-    methods: {
-
-        next() {
-            this.clicked++;
-            },
-
-        prev() {
-            this.clicked--;
-        },
-
-        closeWindow() {
-            window.close(); // סוגר את חלון האתר.
-        },
+    toPackage() {
+      window.location.href = "https://madortill.github.io/MentoringPackage/";
     },
-}
+  },
+};
 </script>
 
 <style scoped>
-
 #end-screen {
   text-align: center;
 }
 
 .talk-text {
-    margin: 2rem;
-    animation: floatAnimation 3s ease-in-out infinite;
-    color: #ab66e7;
-    font-size: 4rem;
-    border-radius: 10px;
-    text-decoration: none;
-    position: relative;
-    cursor: default;
-    font-family: 'Heebo-Bold';
+  margin: 2rem;
+  animation: floatAnimation 3s ease-in-out infinite;
+  color: #ab66e7;
+  font-size: 4rem;
+  border-radius: 10px;
+  text-decoration: none;
+  position: relative;
+  cursor: default;
+  font-family: "Heebo-Bold";
 }
 
 @keyframes floatAnimation {
-0% {
+  0% {
     transform: translateY(0);
-}
-50% {
+  }
+  50% {
     transform: translateY(-1rem);
-}
-100% {
+  }
+  100% {
     transform: translateY(0);
-}
+  }
 }
 
 .talk-text:hover {
-    color: #ab66e7;
+  color: #ab66e7;
 }
 
 .talk-text:before {
-    content: "";
-    position: absolute;
-    width: 40%;
-    height: 2px;
-    bottom: 0;
-    right: 30%;
-    background-color: #ab66e7;
-    visibility: hidden;
-    transform: scaleX(0);
-    transition: all 0.3s ease-in-out 0s;
+  content: "";
+  position: absolute;
+  width: 40%;
+  height: 2px;
+  bottom: 0;
+  right: 30%;
+  background-color: #ab66e7;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out 0s;
 }
 
 .talk-text:hover:before {
-    visibility: visible;
-    transform: scaleX(1.5);
+  visibility: visible;
+  transform: scaleX(1.5);
 }
 
 h1 {
@@ -156,9 +144,12 @@ h1 {
 }
 
 @keyframes fadeInUp {
-from {opacity: 0;
-    transform: translateY( 100rem)}
-  to {opacity: 1;
+  from {
+    opacity: 0;
+    transform: translateY(100rem);
+  }
+  to {
+    opacity: 1;
   }
 }
 
@@ -169,62 +160,64 @@ from {opacity: 0;
 }
 
 @keyframes fadeIn {
-from {opacity: 0;
+  from {
+    opacity: 0;
   }
-  to {opacity: 1;
+  to {
+    opacity: 1;
   }
 }
 
 .finale-text {
   text-align: center;
-    color: rgb(148,112,181);
-    font-family: "Heebo-Bold";
-    font-size: 5rem;
-    margin-top: 8rem;
-    line-height: 8rem;
-    animation: floatAnimation 3s ease-in-out infinite;
+  color: rgb(148, 112, 181);
+  font-family: "Heebo-Bold";
+  font-size: 5rem;
+  margin-top: 8rem;
+  line-height: 8rem;
+  animation: floatAnimation 3s ease-in-out infinite;
 }
 
 @keyframes floatAnimation {
-0% {
+  0% {
     transform: translateY(0);
-}
-50% {
+  }
+  50% {
     transform: translateY(-1rem);
-}
-100% {
+  }
+  100% {
     transform: translateY(0);
-}
+  }
 }
 
 .btnNext {
   position: absolute;
-    border: none;
-    cursor: pointer;   
-    height: 4rem;
-    left: 10rem;
-    bottom: 6rem;
-    font-size: 2rem;
-    color: #ffffff;
-    border-radius: 100px;
-    background-color: #ab66e7;
-    z-index: 1;
-    width: 8rem;
+  border: none;
+  cursor: pointer;
+  height: 4rem;
+  left: 10rem;
+  bottom: 6rem;
+  font-size: 2rem;
+  color: #ffffff;
+  border-radius: 100px;
+  background-color: #ab66e7;
+  z-index: 1;
+  width: 8rem;
 }
 
 .btnNext-end {
-    position: absolute;
-    border: none;
-    cursor: pointer;   
-    height: 5rem;
-    left: 52rem;
-    bottom: 15rem;
-    font-size: 2.6rem;
-    color: #ffffff;
-    border-radius: 100px;
-    background-color: rgb(148,112,181);
-    width: 12rem;
-  font-family: 'Heebo-Bold';
+  position: absolute;
+  border: none;
+  cursor: pointer;
+  height: 5rem;
+  left: 52rem;
+  bottom: 15rem;
+  font-size: 2.6rem;
+  color: #ffffff;
+  border-radius: 100px;
+  background-color: rgb(148, 112, 181);
+  width: 12rem;
+  font-family: "Heebo-Bold";
 }
 
 .btnNext-end,
@@ -236,45 +229,63 @@ from {opacity: 0;
 .btnNext-end:hover,
 .btnNext,
 .btnNext-end:focus {
-  animation: borderPulse 4000ms infinite ease-out,  hoverShine 200ms;
+  animation: borderPulse 4000ms infinite ease-out, hoverShine 200ms;
 }
 
 @keyframes borderPulse {
   0% {
-    box-shadow: inset 0px 0px 0px 5px rgba(255, 255, 255,.4), 0px 0px 0px 0px rgba(255,255,255,1);
+    box-shadow: inset 0px 0px 0px 5px rgba(255, 255, 255, 0.4),
+      0px 0px 0px 0px rgba(255, 255, 255, 1);
   }
   35% {
-    box-shadow: inset 0px 0px 0px 3px rgba(117, 117, 255,.2), 0px 0px 0px 10px rgba(255,255,255,0);
+    box-shadow: inset 0px 0px 0px 3px rgba(117, 117, 255, 0.2),
+      0px 0px 0px 10px rgba(255, 255, 255, 0);
   }
   50% {
-    box-shadow: inset 0px 0px 0px 5px rgba(255, 255, 255,.4), 0px 0px 0px 0px rgba(255,255,255,1);
-  } 
+    box-shadow: inset 0px 0px 0px 5px rgba(255, 255, 255, 0.4),
+      0px 0px 0px 0px rgba(255, 255, 255, 1);
+  }
   75% {
-    box-shadow: inset 0px 0px 0px 3px rgba(117, 117, 255,.2), 0px 0px 0px 10px rgba(255,255,255,0);
+    box-shadow: inset 0px 0px 0px 3px rgba(117, 117, 255, 0.2),
+      0px 0px 0px 10px rgba(255, 255, 255, 0);
   }
   100% {
-    box-shadow: inset 0px 0px 0px 5px rgba(255, 255, 255,.4), 0px 0px 0px 0px rgba(255,255,255,1);
+    box-shadow: inset 0px 0px 0px 5px rgba(255, 255, 255, 0.4),
+      0px 0px 0px 0px rgba(255, 255, 255, 1);
   }
 }
 
-
 @keyframes hoverShine {
-  0%{
-    background-image: linear-gradient(135deg, rgba(255,255,255,.4) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,0) 100%);
+  0% {
+    background-image: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
-  50%{
-    background-image: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.4) 50%, rgba(255,255,255,0) 100%);
+  50% {
+    background-image: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
-  100%{
-    background-image: linear-gradient(135deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 50%, rgba(255,255,255,.4) 100%);
+  100% {
+    background-image: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0) 50%,
+      rgba(255, 255, 255, 0.4) 100%
+    );
   }
 }
 
 .next {
   left: 10rem;
   text-align: center;
-
-} 
+}
 
 .gear {
   position: absolute;
@@ -283,9 +294,8 @@ from {opacity: 0;
   margin: 0 auto;
   border-radius: 50%;
   background: var(--stroke-color);
- 
 }
-.gear:before{
+.gear:before {
   position: absolute;
   z-index: 2;
   content: "";
@@ -293,10 +303,13 @@ from {opacity: 0;
   background: var(--main-color);
 }
 .gear:after {
-  position: absolute; left: 25rem; top: 25rem;
+  position: absolute;
+  left: 25rem;
+  top: 25rem;
   z-index: 3;
   content: "";
-  width: 70rem; height: 70rem;
+  width: 70rem;
+  height: 70rem;
   border-radius: 50%;
   border: 5px solid var(--stroke-color);
   box-sizing: border-box;
@@ -317,28 +330,65 @@ from {opacity: 0;
 }
 
 .gear.three {
-    height: 30rem;
-    bottom: 25rem;
-    left: 1rem;
+  height: 30rem;
+  bottom: 25rem;
+  left: 1rem;
   animation: anticlockwise 5s linear infinite;
 }
 
 @keyframes clockwise {
-  0% { -webkit-transform: rotate(0deg);}
-  100% { -webkit-transform: rotate(360deg);}
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 @keyframes anticlockwise {
-  0% { -webkit-transform: rotate(360deg);}
-  100% { -webkit-transform: rotate(0deg);}
+  0% {
+    -webkit-transform: rotate(360deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
 }
 @-webkit-keyframes clockwise {
-  0% { -webkit-transform: rotate(0deg);}
-  100% { -webkit-transform: rotate(360deg) ;}
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 @-webkit-keyframes anticlockwise {
-  0% { -webkit-transform: rotate(360deg);}
-  100% { -webkit-transform: rotate(0deg);}
+  0% {
+    -webkit-transform: rotate(360deg);
+  }
+  100% {
+    -webkit-transform: rotate(0deg);
+  }
 }
 
+.toPackageBtn {
+  background-image: url(@/assets/media/circle.svg);
+  background-size: 100% 100%;
+  height: 8rem;
+  width: 8rem;
+  text-align: center;
+  align-content: center;
+  color: #ebebeb;
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 5px 7px rgba(0, 0, 0, 0.2));
+  animation-play-state: paused;
+  font-size: 1.3rem;
+}
 
+.toPackageBtn:hover {
+  height: 9rem;
+  width: 9rem;
+}
 </style>
