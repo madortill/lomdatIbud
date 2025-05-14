@@ -68,7 +68,7 @@ export default {
 
   data() {
     return {
-      page: 5,
+      page: 0,
       titleIndex: -1,
       showNav: true,
       showAbout: false,
