@@ -19,8 +19,6 @@
             <p class = "list-text-about">רב"ט דורון הרפז</p>
             <h3 class = "list-text-about">גרפיקה:</h3>
             <p class = "list-text-about">רב"ט דורון הרפז</p>
-            <h3 class = "list-text-about">מומחית תוכן:</h3>
-            <p class = "list-text-about">רב"ט אלה טייטלר</p>
             <h3 class = "list-text-about">רת"ח מו"פ:</h3>
             <p class = "list-text-about">רס"ל אביב אואנונו</p>
             <h3 class = "list-text-about">רמ"ד טי"ל:</h3>
